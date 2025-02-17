@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, Input, OnDestroy, OnInit, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, Renderer2, 
+         ViewChild, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { INewMessage, INewMessages, MbsNewsService } from './mbs-newsbar.service';
 
@@ -15,31 +16,37 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
     @ViewChild( 'content' )    contentRef!: ElementRef;
 
     /**
-    *     Defines direction of ticker content. [left, right, alternate]
+    *     Defines direction of ticker content. [left, right, alternate].
     *     type: string
     */
     @Input() direction = 'left';
 
     /**
-    *     Defines speed of ticker content. [time in seconds, miliseconds]
+    *     Defines speed of ticker content. [time in seconds, miliseconds].
     *     type: time in string
     */
     @Input() speed = '30s';
 
     /**
-    *     Defines whether ticker stop on hover. [true, false]
+    *     Defines whether ticker stop on hover. [true, false].
     *     type: boolean
     */
     @Input() stopOnHover = true;
 
     /**
-    *     Set ticker animation transition play state [true, false]
+    *     Set ticker animation transition play state [true, false].
     *     type: boolean
     */
     @Input() playState = true;
 
     /**
-    *     Internal class variables 
+    *     Set ticker update interval. 
+    *     type: number
+    */
+    @Input() updateInterval: number = 300;
+
+    /**
+    *     Internal class variables.
     * 
     */
     private directions: any = { left: 'normal', right: 'reverse', alternate: 'alternate' };
@@ -50,7 +57,8 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
     /**
     *    Constructor 
     *  
-    *    @param renderer         Angular renderer2 class injectable
+    *    @param renderer         Angular renderer2 class injectable.
+    * 
     *    @returns                nothing 
     */
     constructor( private renderer: Renderer2, private newsService: MbsNewsService ) 
@@ -71,13 +79,13 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
     }
 
 
-    public ngOnInit()
+    public ngOnInit(): void
     {
         this.update();
         this.timer = setInterval( () => { 
             this.sub.unsubscribe();
             this.update();
-        }, 1000 * 300 );
+        }, this.updateInterval * 1000 );
         return;
     }
    
@@ -89,6 +97,7 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
             {
                 this.children.forEach( (element:any) => {
                     this.renderer.removeChild( this.contentRef.nativeElement, element );
+                    
                 } );
                 this.children = new Array<any>();
             }

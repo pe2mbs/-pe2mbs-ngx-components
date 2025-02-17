@@ -1,15 +1,23 @@
 # NgxNewsbar
+The newsbar component shows a rss news feed in the application. When no messages are present the
+newsbar is hidden, when messages are present the newsbar is shows automaticlly.  
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
 ## Usage
 To use the NewsBarComponent youneed to add the MbsNewsbarModule to the @NgModule of AppModule class.
+and add in 'providers' the variable 'MbsNewsFeedUri' and the usr value where your news uri in your 
+backend.
 
     @NgModule({
         ...
         imports: [
             ...
             MbsNewsbarModule,
+        ],
+        providers: [
+            ...
+            { provide: 'MbsNewsFeedUri', useValue: '/api/rss/newsfeed' }, 
+            ...
         ],
         ...
     })
@@ -22,6 +30,49 @@ In the html file where the news bar should be shown, add the following:
 Optionally extra parameters may be given,these are the following, the default 
 values provide the standard behaviour of the news bar.
 
+## Backend interface
+
+The backend must provide the following interface. 
+
+    export interface INewMessage 
+    {
+        message:    string;
+        alert:      boolean
+    }
+
+
+    export interface INewMessages 
+    {
+        enabled:    boolean;
+        messages?:  Array<INewMessage>;
+    }
+
+
+### Python pydantic, version 2.x 
+
+    import typing
+    from pydandic import BaseModel
+
+
+    class INewMessage( BaseModel ):
+        message:    str
+        alert:      bool
+
+
+    class INewMessages( BaseModel ):
+        enabled:    bool
+        messages:   typing.List[ INewMessage ] = None
+
+
+    @app.route( '/api/rss/newsfeed', methods = [ 'GET' ] )
+    def news_feed():
+        newsData = INewMessages( enabled = false )
+        ...
+
+        return newsData  
+
+
+## Attributes of 'mbs-newsbar'
 
 ### direction
 The direction controls which direction the news scrolls, the posible values are;
@@ -36,6 +87,11 @@ This is the value in seconds how long it takes to scroll the news feed.
 
 The default value is 30.
 
+### updateInterval
+Sets the interval for the news service class. 
+
+The default interval 300 seconds. 
+
 ### stopOnHover
 Defines whether ticker stop on hover [true, false].
 
@@ -47,15 +103,7 @@ Set ticker animation transition play state [true, false]
 The dafault value is true.
 
 
-
-
-
 # Angular production
-
-## Code scaffolding
-
-Run `ng generate component component-name --project ngx-newsbar` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-newsbar`.
-> Note: Don't forget to add `--project ngx-newsbar` or else it will be added to the default project in your `angular.json` file. 
 
 ## Build
 

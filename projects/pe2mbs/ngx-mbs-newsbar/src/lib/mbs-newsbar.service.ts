@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -23,14 +23,14 @@ export interface INewMessages
 })
 export class MbsNewsService
 {
-    constructor( private http: HttpClient ) 
+    constructor( private http: HttpClient, @Inject('MbsNewsFeedUri') @Optional() private uri?: string ) 
     { 
         return;
     }
 
     public getNews(): Observable<INewMessages>
     {
-        return ( this.http.get<INewMessages>( '/api/rss/newsfeed' ).pipe( catchError( this.handleError( 'getNewsFeed', {
+        return ( this.http.get<INewMessages>( this.uri || '/rss/newsfeed' ).pipe( catchError( this.handleError( 'getNewsFeed', {
             enabled: false
         } ) ) ) );
     }

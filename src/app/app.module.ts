@@ -50,7 +50,8 @@ import { MbsVtoolbarModule } from 'projects/pe2mbs/ngx-mbs-vtoolbar/src/public-a
         MbsVtoolbarModule,
     ],
     providers: [
-        fakeBackendProvider
+        fakeBackendProvider,
+        { provide: 'MbsNewsFeedUri', useValue: '/api/rss/newsfeed' }, 
     ],
     bootstrap: [
         AppComponent
