@@ -1,0 +1,8 @@
+<nav class="nav">
+    <ul class="nav-list" style="display: flex;">
+        <li class="nav-list-horz" *ngFor="let d of items"> 
+            <mbs-menu-item [item]="d" [mbsSubmenuDropOpen]="d.children" mode="menubar">
+            </mbs-menu-item>
+        </li>
+    </ul>
+</nav>

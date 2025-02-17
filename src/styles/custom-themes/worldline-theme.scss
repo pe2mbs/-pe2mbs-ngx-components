@@ -1,0 +1,139 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'theming';
+@use '../components.scss' as comp;
+
+
+@include mat.core();
+
+/* These palettes are generated using https://themes.angular-material.dev/ */
+
+$worldline-primary: (
+    50 : #e9f7f5,
+    100 : #c7ece6,
+    200 : #a2dfd5,
+    300 : #7dd2c4,
+    400 : #61c8b7,
+    500 : #45beaa,
+    600 : #3eb8a3,
+    700 : #36af99,
+    800 : #2ea790,
+    900 : #1f997f,
+    A100 : #d4fff5,
+    A200 : #a1ffea,
+    A400 : #6effde,
+    A700 : #54ffd8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$worldline-accent: (
+    50 : #f6f0f2,
+    100 : #e9dade,
+    200 : #dac1c9,
+    300 : #cba8b3,
+    400 : #c096a2,
+    500 : #b58392,
+    600 : #ae7b8a,
+    700 : #a5707f,
+    800 : #9d6675,
+    900 : #8d5363,
+    A100 : #ffffff,
+    A200 : #ffe8f1,
+    A400 : #ffb5d2,
+    A700 : #ff9bc3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$worldline-error: (
+    50 : #ffeae9,
+    100 : #ffccc8,
+    200 : #ffaaa4,
+    300 : #ff8780,
+    400 : #ff6e64,
+    500 : #ff5449,
+    600 : #ff4d42,
+    700 : #ff4339,
+    800 : #ff3a31,
+    900 : #ff2921,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #fffbfc,
+    A700 : #ffe2e5,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$worldline-primary: mat.define-palette( $worldline-primary );
+$worldline-accent:  mat.define-palette( $worldline-accent, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$worldline-warn:    mat.define-palette( $worldline-error );
+
+$worldline-theme:   mat.define-light-theme(
+    (
+        color: (
+            primary: $worldline-primary,
+            accent: $worldline-accent,
+            warn: $worldline-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    )
+);
+
+$worldline-dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: $worldline-primary,
+            accent: $worldline-accent,
+            warn: $worldline-warn,
+        ),
+    )
+);
+
+@include mat.all-component-themes( $worldline-theme);
+@include comp.custom-components( $worldline-theme );

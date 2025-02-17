@@ -1,0 +1,139 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'theming';
+@use '../components.scss' as comp;
+
+
+@include mat.core();
+
+/* These palettes are generated using https://themes.angular-material.dev/ */
+
+$dark-primary-map: (
+    50 : #ede9ed,
+    100 : #d2c9d2,
+    200 : #b4a5b4,
+    300 : #968195,
+    400 : #80667f,
+    500 : #694b68,
+    600 : #614460,
+    700 : #563b55,
+    800 : #4c334b,
+    900 : #3b233a,
+    A100 : #eda0ff,
+    A200 : #e46dff,
+    A400 : #da3aff,
+    A700 : #d520ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$dark-accent-map: (
+    50 : #f0eaea,
+    100 : #dacbcb,
+    200 : #c1a8a9,
+    300 : #a88587,
+    400 : #956b6d,
+    500 : #825153,
+    600 : #7a4a4c,
+    700 : #6f4042,
+    800 : #653739,
+    900 : #522729,
+    A100 : #ffb5c7,
+    A200 : #ff82a0,
+    A400 : #ff4f79,
+    A700 : #ff3666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$dark-error-map: (
+    50 : #f7e4e4,
+    100 : #eababa,
+    200 : #dd8d8d,
+    300 : #cf5f5f,
+    400 : #c43c3c,
+    500 : #ba1a1a,
+    600 : #b31717,
+    700 : #ab1313,
+    800 : #a30f0f,
+    900 : #940808,
+    A100 : #ffd5dd,
+    A200 : #ffa2b4,
+    A400 : #ff6f8a,
+    A700 : #ff5576,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$dark-primary: mat.define-palette( $dark-primary-map );
+
+$dark-accent:  mat.define-palette( $dark-accent-map, A200, A100, A400);
+// The "warn" palette is optional and defaults to red if not specified.
+$dark-warn:    mat.define-palette( $dark-error-map );
+
+$dark-theme:   mat.define-light-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$dark-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes( $dark-theme );
+@include comp.custom-components( $dark-theme );

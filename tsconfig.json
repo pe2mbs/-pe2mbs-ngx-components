@@ -11,6 +11,44 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@pe2mbs/ngx-crud-table": [
+        "dist/pe2mbs/ngx-crud-table/pe2mbs-ngx-crud-table",
+        "dist/pe2mbs/ngx-crud-table",
+        "dist/pe2mbs/ngx-crud-table/pe2mbs-ngx-crud-table",
+        "dist/pe2mbs/ngx-crud-table"
+      ],
+      "@pe2mbs/ngx-mbs-footer": [
+        "dist/pe2mbs/ngx-mbs-footer/pe2mbs-ngx-mbs-footer",
+        "dist/pe2mbs/ngx-mbs-footer"
+      ],
+      "@pe2mbs/ngx-mbs-header": [
+        "dist/pe2mbs/ngx-mbs-header/pe2mbs-ngx-mbs-header",
+        "dist/pe2mbs/ngx-mbs-header"
+      ],
+      "@pe2mbs/ngx-mbs-vtoolbar": [
+        "dist/pe2mbs/ngx-mbs-vtoolbar/pe2mbs-ngx-mbs-vtoolbar",
+        "dist/pe2mbs/ngx-mbs-vtoolbar"
+      ],
+      "@pe2mbs/ngx-menubar": [
+        "dist/pe2mbs/ngx-menubar/pe2mbs-ngx-menubar",
+        "dist/pe2mbs/ngx-menubar"
+      ],
+      "@pe2mbs/ngx-newsbar": [
+        "dist/pe2mbs/ngx-newsbar/pe2mbs-ngx-newsbar",
+        "dist/pe2mbs/ngx-newsbar"
+      ],
+      "@pe2mbs/ngx-one-page": [
+        "dist/pe2mbs/ngx-one-page/pe2mbs-ngx-one-page",
+        "dist/pe2mbs/ngx-one-page"
+      ],
+      "ngx-library": [
+        "dist/ngx-library/ngx-library",
+        "dist/ngx-library"
+      ]
+    },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,

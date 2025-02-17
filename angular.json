@@ -31,7 +31,32 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/styles/custom-themes/dark-theme.scss",
+                "bundleName": "dark-theme",
+                "inject": false
+              }, {
+                "input": "src/styles/custom-themes/light-theme.scss",
+                "bundleName": "light-theme",
+                "inject": false
+              }, {
+                "input": "src/styles/custom-themes/orange-theme.scss",
+                "bundleName": "orange-theme",
+                "inject": false
+              }, {
+                "input": "src/styles/custom-themes/equens-theme.scss",
+                "bundleName": "equens-theme",
+                "inject": false
+              }, {
+                "input": "src/styles/custom-themes/worldline-theme.scss",
+                "bundleName": "worldline-theme",
+                "inject": false
+              }, {
+                "input": "src/styles/custom-themes/dev-theme.scss",
+                "bundleName": "dev-theme",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -99,13 +124,333 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
+    },
+    "@pe2mbs/ngx-mbs-newsbar": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-newsbar",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-newsbar/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-newsbar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-newsbar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-newsbar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-menubar": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-menubar",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-menubar/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-menubar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-one-page": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-one-page",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-one-page/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-one-page/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-one-page/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-one-page/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-crud-table": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-crud-table",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-crud-table/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-crud-table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-crud-table/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-crud-table/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+
+    "@pe2mbs/ngx-mbs-split-view": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-split-view",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-split-view/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-split-view/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-split-view/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-split-view/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-tree-component": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-tree-component",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-tree-component/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-tree-component/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-tree-component/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-tree-component/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-monaco-editor": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-monaco-editor",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-monaco-editor/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-monaco-editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-monaco-editor/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-monaco-editor/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-gencrud": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-gencrud",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-gencrud/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-gencrud/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-gencrud/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-gencrud/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-header": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-header",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-header/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-header/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-header/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-header/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-header/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-header/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-header/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-footer": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-footer",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-footer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-footer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-footer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-footer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-footer/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-footer/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-footer/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-vtoolbar": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-vtoolbar",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-vtoolbar/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-vtoolbar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-vtoolbar/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/karma.conf.js"
+          }
+        }
+      }
     }
+
   },
   "defaultProject": "test-package"
 }

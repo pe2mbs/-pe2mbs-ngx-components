@@ -1,0 +1,89 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import '~@angular/material/theming';
+
+
+@mixin color($theme)
+{
+    $color_map_primary:     map.get( $theme, color, primary );   
+    $color_map_accent:       map.get( $theme, color, accent );   
+    $color_map_warn:        map.get( $theme, color, warn );   
+    
+    .vsidebar
+    {
+        &.color-primary
+        {
+            background:         mat.get-color-from-palette( $color_map_primary, 'default' );
+            color:              mat.get-color-from-palette( $color_map_primary, 'background' );
+        }
+
+        &.color-accent
+        {
+            background:         mat.get-color-from-palette( $color_map_accent, 'default' );
+            color:              mat.get-color-from-palette( $color_map_accent, 'background' );
+        }
+
+        &.color-warn
+        {
+            background:         mat.get-color-from-palette( $color_map_warn, 'default' );
+            color:              mat.get-color-from-palette( $color_map_warn, 'background' );
+        }
+        
+    }
+
+    .btn 
+    {
+        &.color-primary
+        {
+            background:         mat.get-color-from-palette( $color_map_primary, 'default' );
+            color:              mat.get-color-from-palette( $color_map_primary, 'background' );
+        }
+
+        &.color-accent
+        {
+            background:         mat.get-color-from-palette( $color_map_accent, 'default' );
+            color:              mat.get-color-from-palette( $color_map_accent, 'background' );
+        }
+
+        &.color-warn
+        {
+            background:         mat.get-color-from-palette( $color_map_warn, 'default' );
+            color:              mat.get-color-from-palette( $color_map_warn, 'background' );
+        }
+        &.color-undefined
+        {
+            background:         inherit;
+            color:              inherit;
+        }
+    }  
+
+    .btn:hover 
+    {
+        background-color:       mat.get-color-from-palette( $color_map_accent, 'default' );;
+    }
+}
+
+
+@mixin typography($theme) 
+{
+    // Get the typography config from the theme.
+    $typography-config: mat.get-typography-config($theme);
+  
+    .ticker-line {
+        font-family: mat.font-family($typography-config);
+    }
+}
+  
+
+@mixin mbs-vtoolbar-theme( $theme ) 
+{
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+  
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($theme);
+    }
+}

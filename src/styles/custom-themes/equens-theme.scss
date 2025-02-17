@@ -1,0 +1,140 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'theming';
+@use '../components.scss' as comp;
+
+
+@include mat.core();
+
+
+/* These palettes are generated using https://themes.angular-material.dev/ */
+
+$equens-primary: (
+    50 : #f2eaf4,
+    100 : #dfcae4,
+    200 : #caa6d3,
+    300 : #b582c1,
+    400 : #a568b3,
+    500 : #954da6,
+    600 : #8d469e,
+    700 : #823d95,
+    800 : #78348b,
+    900 : #67257b,
+    A100 : #eebcff,
+    A200 : #e289ff,
+    A400 : #d556ff,
+    A700 : #cf3cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$equens-accent: (
+    50 : #f6f0f2,
+    100 : #e9dade,
+    200 : #dac1c9,
+    300 : #cba8b3,
+    400 : #c096a2,
+    500 : #b58392,
+    600 : #ae7b8a,
+    700 : #a5707f,
+    800 : #9d6675,
+    900 : #8d5363,
+    A100 : #ffffff,
+    A200 : #ffe8f1,
+    A400 : #ffb5d2,
+    A700 : #ff9bc3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$equens-error: (
+    50 : #ffeae9,
+    100 : #ffccc8,
+    200 : #ffaaa4,
+    300 : #ff8780,
+    400 : #ff6e64,
+    500 : #ff5449,
+    600 : #ff4d42,
+    700 : #ff4339,
+    800 : #ff3a31,
+    900 : #ff2921,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #fffbfc,
+    A700 : #ffe2e5,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$equens-primary: mat.define-palette($equens-primary);
+$equens-accent: mat.define-palette($equens-accent, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$equens-warn: mat.define-palette($equens-error);
+
+$equens-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $equens-primary,
+      accent: $equens-accent,
+      warn: $equens-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$equens-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $equens-primary,
+      accent: $equens-accent,
+      warn: $equens-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes( $equens-theme );
+@include comp.custom-components( $equens-theme );

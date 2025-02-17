@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import '~@angular/material/theming';
+
+
+@mixin color($theme)
+{
+    $color_map:             map.get( $theme, color, primary );   
+    $news-color-bg:         mat.get-color-from-palette( $color_map, 'lighter' );
+    $news-color:            mat.get-color-from-palette( $color_map, 'darker-contrast');
+    $color_map_warn:        map.get( $theme, color, warn );   
+    $news-color-alert:      mat.get-color-from-palette($color_map_warn, 800 );
+
+    .ticker-line
+    {
+        background:         $news-color-bg;
+        color:              $news-color;
+    }
+
+
+    .ticker-alert
+    {
+        color:              $news-color-alert;
+        background-color:   $news-color-bg;
+    }
+
+
+    .ticker-normal
+    {
+        color:              $news-color;
+        background-color:   $news-color-bg;
+    }
+}
+
+
+@mixin typography($theme) 
+{
+    // Get the typography config from the theme.
+    $typography-config: mat.get-typography-config($theme);
+  
+    .ticker-line {
+        font-family: mat.font-family($typography-config);
+    }
+}
+  
+
+@mixin mbs-newsbar-theme( $theme ) 
+{
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+  
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($theme);
+    }
+}

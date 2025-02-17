@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngx-split-view",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "split.js": "Split"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "split.js"
+  ]
+}

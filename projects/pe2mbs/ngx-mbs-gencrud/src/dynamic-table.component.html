@@ -1,0 +1,25 @@
+<table mat-table [dataSource]="dataSource" columnResize mdtMultiSort [mode]="multiSort ? 'multi' : 'single'">
+    <ng-container *ngFor="let column of columns; let i = index" matColumnDef="{{ column.name }}"
+                  [sticky]="column.sticky === 'start'" [stickyEnd]="column.sticky === 'end'">
+
+        <th mat-header-cell *matHeaderCellDef mdt-sort-header="{{ column.name }}" [disabled]="column.sort === false">
+            <span [matTooltip]="column.hint || ''" [matTooltipShowDelay]="hintDelay">{{ column.displayName }}</span>
+            <button type="button" [attr.aria-label]="'Filter by ' + column.displayName" class="mat-sort-header-button" *ngIf="showFilters && canFilter(column)"
+                    (click)="onFilterClick($event, column)" (keydown.enter)="onFilterClick($event, column)" (keydown.space)="onFilterClick($event, column)"
+                    matTooltip="{{ getFilterDescription(column) }}" matTooltipDisabled="{{ !getFilterDescription(column) }}">
+                <mat-icon color="{{ isFiltered(column) ? 'primary' : 'default' }}">filter_list</mat-icon>
+            </button>
+        </th>
+        <td mat-cell *matCellDef="let row">
+            <mdt-table-cell *ngIf="column.type != 'options'" [row]="row" [column]="column">
+            </mdt-table-cell>
+            <div *ngIf="column.type == 'options'">
+                <ng-content [select]="row-buttons"></ng-content>
+            </div>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: stickyHeader"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+</table>
+<mat-paginator [hidden]="!isUsingInternalPaginator()" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+</mat-paginator>

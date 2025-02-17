@@ -1,0 +1,139 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'theming';
+@use '../components.scss' as comp;
+
+
+@include mat.core();
+
+
+$custom-light-primary-map: (
+    50 : #eef5fb,
+    100 : #d4e5f5,
+    200 : #b7d4ee,
+    300 : #9ac2e7,
+    400 : #85b5e1,
+    500 : #6fa8dc,
+    600 : #67a0d8,
+    700 : #5c97d3,
+    800 : #528dce,
+    900 : #407dc5,
+    A100 : #ffffff,
+    A200 : #e3efff,
+    A400 : #b0d3ff,
+    A700 : #96c4ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$custom-light-accent-map: (
+    50 : #f6f0f2,
+    100 : #e9dade,
+    200 : #dac1c9,
+    300 : #cba8b3,
+    400 : #c096a2,
+    500 : #b58392,
+    600 : #ae7b8a,
+    700 : #a5707f,
+    800 : #9d6675,
+    900 : #8d5363,
+    A100 : #ffffff,
+    A200 : #ffe8f1,
+    A400 : #ffb5d2,
+    A700 : #ff9bc3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$custom-light-error-map: (
+    50 : #ffeae9,
+    100 : #ffccc8,
+    200 : #ffaaa4,
+    300 : #ff8780,
+    400 : #ff6e64,
+    500 : #ff5449,
+    600 : #ff4d42,
+    700 : #ff4339,
+    800 : #ff3a31,
+    900 : #ff2921,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #fffbfc,
+    A700 : #ffe2e5,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$custom-light-primary: mat.define-palette( $custom-light-primary-map );
+$custom-light-accent:  mat.define-palette( $custom-light-accent-map, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$custom-light-warn:    mat.define-palette( $custom-light-error-map );
+
+$custom-light-theme:   mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-light-primary,
+      accent: $custom-light-accent,
+      warn: $custom-light-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$custom-light-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $custom-light-primary,
+      accent: $custom-light-accent,
+      warn: $custom-light-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes( $custom-light-theme );
+@include comp.custom-components( $custom-light-theme );

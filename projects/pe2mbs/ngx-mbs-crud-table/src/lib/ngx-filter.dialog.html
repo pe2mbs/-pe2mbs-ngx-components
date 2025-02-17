@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Filter "{{ column.caption }}"</h1>
+<div mat-dialog-content>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Choose filter</mat-label>
+        <mat-select placeholder="Choose filter" [(ngModel)]="selectMode">
+            <mat-option *ngFor="let mode of filterModes" [value]="mode.value">
+                {{ mode.label }}
+            </mat-option>
+        </mat-select>        
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Value</mat-label>
+        <input matInput [(ngModel)]="filterValue" placeholder="Value">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end"> 
+    <button mat-flat-button (click)="cancel()" cdkFocusInitial> Clear / Cancel </button>
+    <button mat-flat-button color="warn" (click)="apply()"> Apply </button>
+</div>

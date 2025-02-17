@@ -1,0 +1,61 @@
+
+.nav-item, li.nav-item
+{
+    height:             36px;
+    float:              left; 
+    display:            block;
+    padding:            0px 12px;
+    padding-top:        10px;
+
+    .menubar-icon 
+    {
+        padding-left:   10px;
+        font-size:      16px;
+    }
+
+    .menu-icon 
+    {
+        padding-right:  10px;
+        font-size:      16px;
+    }
+}
+
+
+.nav-item a, li.nav-item a 
+{
+    display:            block;
+    color:              inherit;
+    background:         inherit;
+    text-decoration:    none;
+    padding:            0;
+    height:             18px;
+}
+
+
+.nav-item a:hover 
+{
+    display:            block;
+    color:              inherit;
+    background:         inherit;
+}
+
+
+.nav-list-right 
+{
+    list-style-type:    none;
+    height:             inherit;
+    .nav-item
+    {    
+        float:          right;
+        
+        .menu-icon
+        {
+            font-size: 16px;
+        }
+
+        .menubar-icon
+        {
+            font-size: 16px;
+        }
+    }
+}

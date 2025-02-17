@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use 'menubar/menubar.style' as bar;
+@use 'menuitem/menuitem.style' as item;
+@use 'submneu/submenu.style' as sub;
+@import '~@angular/material/theming';
+
+
+@mixin mbs-menubar-theme( $theme ) 
+{
+    @include bar.mbs-menubar-theme( $theme );
+    @include item.mbs-menuitem-theme( $theme );
+    @include sub.mbs-submenu-theme( $theme );
+}
+

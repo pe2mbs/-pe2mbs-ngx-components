@@ -1,23 +1,37 @@
 {
   "name": "test-package",
-  "version": "0.0.0",
+  "version": "12.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "python3 release.py -m frontend development && ng serve",
+    "build": "python3 release.py -m frontend production && ng build",
+    "watch": "python3 release.py -m frontend development && ng build --watch --configuration development",
+    "bld_newsbar": "ng build @pe2mbs/ngx-newsbar",
+    "pck_newsbar": "cd dist/pe2mbs/ngx-newsbar && npm pack",
+    "package_newsbar": "npm run bld_newsbar && npm run pck_newsbar",
+    "bld_menubar": "ng build @pe2mbs/ngx-menubar",
+    "pck_menubar": "cd dist/pe2mbs/ngx-menubar && npm pack",
+    "package_menubar": "npm run bld_menubar && npm run pck_newsbar",
+    "bld_one-page": "ng build @pe2mbs/ngx-one-page",
+    "pck_one-page": "cd dist/pe2mbs/ngx-one-page && npm pack",
+    "package_one-page": "npm run bld_one-page && npm run pck_one-page",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
+    "@angular/cdk": "^12.2.13",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
     "@angular/forms": "~12.2.0",
+    "@angular/material": "^12.2.13",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@fontsource/material-icons": "^5.1.1",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -34,6 +48,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^12.1.1",
+    "sass": "^1.84.0",
     "typescript": "~4.3.5"
   }
 }

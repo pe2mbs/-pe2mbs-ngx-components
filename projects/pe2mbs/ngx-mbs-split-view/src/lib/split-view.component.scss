@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+}
+
+:host.split-view-horizontal {
+    flex-direction: row;
+}
+
+:host.split-view-vertical {
+    flex-direction: column;
+}
+
+::ng-deep .gutter.gutter-horizontal {
+    cursor: col-resize;
+}
+::ng-deep .gutter.gutter-vertical {
+    cursor: row-resize;
+}

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
+@use "styles/custom-themes/light-theme" as default;
+@use 'styles/components.scss' as comp;
+
+@import "styles/reset";
+@import "font.scss";
+
+@include mat.core();
+
+// This removes the warning of duplicate theme configurations
+mat.$theme-ignore-duplication-warnings: true;
+
+@include mat.all-component-themes( default.$custom-light-theme );
+@include comp.custom-components( default.$custom-light-theme );

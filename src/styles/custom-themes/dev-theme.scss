@@ -1,0 +1,139 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'theming';
+@use '../components.scss' as comp;
+
+
+@include mat.core();
+
+
+$dev-primary: (
+  50 : #f3e0e0,
+  100 : #e0b3b3,
+  200 : #cc8080,
+  300 : #b84d4d,
+  400 : #a82626,
+  500 : #990000,
+  600 : #910000,
+  700 : #860000,
+  800 : #7c0000,
+  900 : #6b0000,
+  A100 : #ff9a9a,
+  A200 : #ff6767,
+  A400 : #ff3434,
+  A700 : #ff1a1a,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  )
+);
+
+
+$dev-accent: (
+    50 : #f6f0f2,
+    100 : #e9dade,
+    200 : #dac1c9,
+    300 : #cba8b3,
+    400 : #c096a2,
+    500 : #b58392,
+    600 : #ae7b8a,
+    700 : #a5707f,
+    800 : #9d6675,
+    900 : #8d5363,
+    A100 : #ffffff,
+    A200 : #ffe8f1,
+    A400 : #ffb5d2,
+    A700 : #ff9bc3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$dev-error: (
+    50 : #ffeae9,
+    100 : #ffccc8,
+    200 : #ffaaa4,
+    300 : #ff8780,
+    400 : #ff6e64,
+    500 : #ff5449,
+    600 : #ff4d42,
+    700 : #ff4339,
+    800 : #ff3a31,
+    900 : #ff2921,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #fffbfc,
+    A700 : #ffe2e5,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$dev-primary: mat.define-palette($dev-primary);
+$dev-accent: mat.define-palette($dev-accent, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$dev-warn: mat.define-palette($dev-error);
+
+$dev-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $dev-primary,
+      accent: $dev-accent,
+      warn: $dev-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$dev-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dev-primary,
+      accent: $dev-accent,
+      warn: $dev-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes( $dev-theme );
+@include comp.custom-components( $dev-theme );

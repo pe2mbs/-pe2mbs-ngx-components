@@ -1,0 +1,40 @@
+
+
+.content-window
+{
+    //v border: 1px rgb(90, 83, 83) solid;
+    border: none;
+    background-color: gray;
+    color: white;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.max-window, :host
+{
+    height: 100%;
+    min-height: 100%;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.app-version-info
+{
+    margin-left: 10px; 
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.a-button
+{
+    cursor: grab;
+    mat-icon:hover
+    {
+        cursor: grab;
+
+    }
+}
