@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { INewMessage, INewMessages, MbsNewsService } from './mbs-newsbar.service';
 
 
+export type ETickerDirection = 'left' | 'right' | 'alternate';
+
+
 @Component( {
     selector: 'mbs-newsbar',
     templateUrl: './mbs-newsbar.component.html',
@@ -19,7 +22,7 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
     *     Defines direction of ticker content. [left, right, alternate].
     *     type: string
     */
-    @Input() direction = 'left';
+    @Input() direction: ETickerDirection = 'left';
 
     /**
     *     Defines speed of ticker content. [time in seconds, miliseconds].
@@ -78,7 +81,11 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
         return;
     }
 
-
+    /**
+    *    This initialize the interval timer.
+    * 
+    *    @returns                nothing
+    */
     public ngOnInit(): void
     {
         this.update();
@@ -89,6 +96,11 @@ export class MbsNewsbarComponent implements OnDestroy, OnInit
         return;
     }
    
+    /**
+    *    Internal update function called by the interval timer.
+    * 
+    *    @returns                nothing
+    */
     private update(): void 
     {
         this.sub = this.newsService.getNews().subscribe( (news: INewMessages) => {

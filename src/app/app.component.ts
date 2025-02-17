@@ -33,7 +33,7 @@ export interface IApplicationVersion
 })
 export class AppComponent implements OnInit
 {
-    title: string = 'Test appication'
+    title: string = 'Test application'
     public version!: IApplicationVersion;
     public production: boolean = false;
 

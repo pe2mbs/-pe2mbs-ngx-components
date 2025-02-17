@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,14 +9,14 @@ import { catchError } from 'rxjs/operators';
 } )
 export class MbsMenubarService 
 {
-    constructor( private http: HttpClient ) 
+    constructor( private http: HttpClient, @Inject('MbsMenuUri') @Optional() private uri?: string ) 
     { 
         return;
     }
 
     public getMenu(): Observable<any> 
     {
-        return ( this.http.get<any[]>( '/api/menu' ).pipe( catchError( this.handleError( 'getMenu', [] ) ) ) );
+        return ( this.http.get<any[]>( this.uri || '/api/menu' ).pipe( catchError( this.handleError( 'getMenu', [] ) ) ) );
     }
     
     /**
