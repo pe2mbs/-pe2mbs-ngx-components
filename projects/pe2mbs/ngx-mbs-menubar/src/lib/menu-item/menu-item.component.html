@@ -1,0 +1,57 @@
+<ng-container *ngIf="item.visible">  
+    <ng-container *ngIf="item.isHeader">
+        <li class="mbs-menu-header" role="none">
+            <a [attr.id]="item.id">
+                <fa-icon class="mbs-item-icon" *ngIf="item.icon" [icon]="itemIcon"></fa-icon>
+                <span class="mbs-menu-text">{{ item.caption }}</span>
+            </a>
+        </li>
+    </ng-container>
+    <ng-container *ngIf="item.items && !item.isHeader">
+        <li class="mbs-menu-item" role="none" (mouseenter)="onMouseEnter($event, item)" 
+                                              (mouseleave)="onMouseLeave(item)">
+            <a class="mbs-menu-link" role="mbs-menuitem" aria-haspopup="true" tabindex="0"  
+                                      [attr.aria-expanded]="item.isChildVisible"
+                            [ngClass]="{ 'mbs-menu-item-active': item.routerLink && isActive( item ) }" 
+                                      [attr.id]="item.id">
+                <fa-icon class="mbs-item-icon" *ngIf="item.icon" [icon]="itemIcon"></fa-icon>
+                <span class="mbs-menu-text">{{ item.caption }}</span>
+                <span >
+                    <fa-icon class="menu-icon" [icon]="[ 'fas', 'chevron-right' ]"
+                                *ngIf="orientation === 'vertical'; else chevron_down"></fa-icon>
+                    <ng-template #chevron_down>
+                        <fa-icon class="menu-icon" [icon]="[ 'fas', 'chevron-down' ]"></fa-icon>
+                    </ng-template>
+                </span>
+            </a>
+            <ng-container *ngIf="item.isChildVisible">
+                <ul class="mbs-submenu" role="mbs-menu" [style.top.px]="item.y" 
+                                                        [style.left.px]="item.x">
+                    <ng-container *ngFor="let child of item.items">
+                        <mbs-menu-item [item]="child" [orientation]="'vertical'" 
+                                                        (onClickItem)="onClick( child )">
+                        </mbs-menu-item>
+                    </ng-container>
+                </ul>
+            </ng-container>
+        </li>
+    </ng-container>
+    <ng-container *ngIf="!item.items && !item.isHeader">
+        <li class="mbs-menu-item" role="none">
+            <a class="mbs-menu-link" role="mbs-menuitem" tabindex="0" *ngIf="item.routerLink" 
+                                    [attr.id]="item.id" [routerLink]="item.routerLink" 
+                                    [queryParams]="item.queryParams" [fragment]="item.fragment"
+                                    [queryParamsHandling]="item.queryParamsHandling" 
+                                    [routerLinkActive]="'mbs-menu-item-active'"
+                                    (click)="onClick(item)">
+                <fa-icon class="mbs-item-icon" *ngIf="item.icon" [icon]="itemIcon"></fa-icon>
+                <span class="mbs-menu-text">{{ item.caption }}</span>
+            </a>
+            <a class="mbs-menu-link" role="mbs-menuitem" tabindex="0" *ngIf="!item.routerLink" 
+                                    [attr.id]="item.id" (click)="onClick(item)">
+                <fa-icon class="mbs-item-icon" *ngIf="item.icon" [icon]="itemIcon"></fa-icon>
+                <span class="mbs-menu-text">{{ item.caption }}</span>
+            </a>
+        </li>
+    </ng-container>
+</ng-container>

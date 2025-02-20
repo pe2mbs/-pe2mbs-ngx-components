@@ -4,13 +4,13 @@ import { NgxSplitViewComponent } from './ngx-split-view.component';
 
 
 @NgModule({
-  declarations: [
-    NgxSplitViewComponent
-  ],
-  imports: [
-  ],
-  exports: [
-    NgxSplitViewComponent
-  ]
+    declarations: [
+        NgxSplitViewComponent
+    ],
+    imports: [
+    ],
+    exports: [
+        NgxSplitViewComponent
+    ]
 })
 export class NgxSplitViewModule { }

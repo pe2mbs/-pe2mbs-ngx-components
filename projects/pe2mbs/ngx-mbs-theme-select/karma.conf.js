@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../../coverage/pe2mbs/ngx-mbs-horizonal-menu'),
+      dir: require('path').join(__dirname, '../../../coverage/pe2mbs/ngx-mbs-theme-select'),
       subdir: '.',
       reporters: [
         { type: 'html' },

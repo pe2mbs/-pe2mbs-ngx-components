@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../dist/pe2mbs/ngx-mbs-horizonal-menu",
+  "dest": "../../../dist/pe2mbs/ngx-mbs-theme-select",
   "lib": {
     "entryFile": "src/public-api.ts"
   }

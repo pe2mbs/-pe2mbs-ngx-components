@@ -1,0 +1,15 @@
+<ul role="mbs-menubar" [ngClass]="{
+            'mbs-menubar': true, 'mbs-menubar-horizontal': orientation === 'horizontal',
+            'mbs-menubar-vertical': orientation === 'vertical', 'mbs-menubar-panel': isPanelMenu }" 
+            [class]="styleClass" [attr.id]="inputId"> 
+    <ng-container *ngIf="!isPanelMenu; else panel_menu">
+        <mbs-menu-item *ngFor="let item of items" [item]="item" [orientation]="orientation"
+                        (onClickItem)="onClick( $event )">
+        </mbs-menu-item>
+    </ng-container>
+    <ng-template #panel_menu>
+        <mbs-panel-menu-item *ngFor="let item of items" [item]="item" 
+                                (onClickItem)="onClick( $event )">
+        </mbs-panel-menu-item>
+    </ng-template>
+</ul>

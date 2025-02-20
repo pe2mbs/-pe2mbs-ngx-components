@@ -2,63 +2,72 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { MbsMenuItem } from 'projects/pe2mbs/ngx-mbs-menubar/src/lib/mbs-menuitem';
 import { INewMessages } from 'projects/pe2mbs/ngx-mbs-newsbar/src/public-api';
-import { Theme } from '../theme-selection/mbs-theme.service';
+import { IMbsMenuItem } from 'projects/pe2mbs/ngx-mbs-menubar/src/lib/ngx-mbs-base-item';
+import { IMbsThemeItem } from 'projects/pe2mbs/ngx-mbs-theme-select/src/public-api';
 
 
-const FakeMenu: Array<MbsMenuItem> = [
+const FakeMenu: Array<IMbsMenuItem> = [
     {
         id: "0",
         caption: "Home",
-        link: "/",
-        icon: "fa-home"
+        routerLink: "/",
+        visible: true,
+        icon: [ 'fas', "home" ]
     },
     {
         id: "1",
-        caption: "Which Monument",
-        link: "#https://davidmartinezros.com/Angular5/which-monument/",
-        icon: "fa-landmark"
+        caption: "Test CRUD",
+        routerLink: "test-crud",
+        visible: true,
+        icon: [ 'fas', "landmark" ]
     },
     {
         id: "2",
-        caption: "Interactive background geometries threejs",
-        link: "#https://davidmartinezros.com/Angular5/interactive-background-geometries-threejs/",
-        icon: "fa-tools"
+        caption: "Editor",
+        routerLink: "test-editor",
+        visible: true,
+        icon: [ 'fas', "tools" ]
     },
     {
         id: "3",
-        caption: "Chatbot Myyme",
-        icon: "fa-sms",
-        children: [
+        caption: "Extras",
+        icon: [ 'fas', "sms" ],
+        visible: true,
+        items: [
             {
                 id: "3.1",
-                caption: "Link 3.1 - google.nl",
-                link: "#https://www.google.nl",
-                icon: "fa-trash-alt"
+                caption: "Diff editor",
+                routerLink: "test-diff-editor",
+                visible: true,
+                icon: [ 'fas', "trash-alt" ]
             },
             {
                 id: "3.2",
                 caption: "Link 3.2 - google.uk.co",
-                link: "#https://www.google.uk.co",
-                icon: "fa-trash"
+                visible: true,
+                routerLink: "#https://www.google.uk.co",
+                icon: [ 'fas', "trash" ]
             },
             {
                 id: "3.3",
                 caption: "Link 3.3 - google.es",
-                icon: "fa-sync",
-                children: [
+                visible: true,
+                icon: [ 'fas', "sync" ],
+                items: [
                     {
                         id: "3.3.1",
                         caption: "Link 3.3.1 - google.nl",
-                        link: "#https://www.google.nl",
-                        icon: "fa-trash-alt"
+                        routerLink: "#https://www.google.nl",
+                        visible: true,
+                        icon: [ 'fas', "trash-alt" ]
                     },
                     {
                         id: "3.3.2",
                         caption: "Link 3.3.2 - google.com",
-                        link: "#https://www.google.com",
-                        icon: "fa-trash"
+                        routerLink: "#https://www.google.com",
+                        visible: true,
+                        icon: [ 'fas', "trash" ]
                     }
                 ]
             }
@@ -68,14 +77,16 @@ const FakeMenu: Array<MbsMenuItem> = [
     {
         id: "4",
         caption: "3D Scene at Sea",
-        link: "#https://davidmartinezros.com/Angular2/3d-scene-at-sea/",
-        icon: "fa-cubes"
+        routerLink: "#https://davidmartinezros.com/Angular2/3d-scene-at-sea/",
+        visible: true,
+        icon: [ 'fas', "cubes" ]
     },
     {
         id: "5",
         caption: "About",
-        link: "#https://davidmartinezros.com/Angular2/3d-scene-at-sea/",
-        icon: "fa-address-card"
+        routerLink: "#https://davidmartinezros.com/Angular2/3d-scene-at-sea/",
+        visible: true,
+        icon: [ 'fab', "google" ]
     }
 ];
 
@@ -93,7 +104,7 @@ const newsFeed: INewMessages = {
     ]
 }
 
-const themes: Theme[] = [
+const themes: IMbsThemeItem[] = [
     {
         displayName: 'Orange theme',
         name: 'orange-theme',
@@ -175,10 +186,10 @@ export class FakeBackendInterceptor implements HttpInterceptor
             case url.endsWith('/api/menu') && method === 'GET':
                 return ok( FakeMenu );
 
-            case url.endsWith('/api/theme') && method === 'GET':
-                return ok( 'dark-theme' );
+            case url.endsWith('/api/theme/default') && method === 'GET':
+                return ok( 'light-theme' );
 
-            case url.endsWith('/api/themes') && method === 'GET':
+            case url.endsWith('/api/theme/list') && method === 'GET':
                 return ok( themes ); 
 
             case url.endsWith( '/api/backend/version' ) && method === 'GET':

@@ -160,34 +160,6 @@
         }
       }
     },
-    "@pe2mbs/ngx-mbs-menubar": {
-      "projectType": "library",
-      "root": "projects/pe2mbs/ngx-mbs-menubar",
-      "sourceRoot": "projects/pe2mbs/ngx-mbs-menubar/src",
-      "prefix": "lib",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/pe2mbs/ngx-mbs-menubar/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        }
-      }
-    },
     "@pe2mbs/ngx-mbs-one-page": {
       "projectType": "library",
       "root": "projects/pe2mbs/ngx-mbs-one-page",
@@ -446,6 +418,68 @@
             "main": "projects/pe2mbs/ngx-mbs-vtoolbar/src/test.ts",
             "tsConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/tsconfig.spec.json",
             "karmaConfig": "projects/pe2mbs/ngx-mbs-vtoolbar/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-theme-select": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-theme-select",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-theme-select/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-theme-select/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-theme-select/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-theme-select/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-theme-select/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-theme-select/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-theme-select/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@pe2mbs/ngx-mbs-menubar": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-menubar",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-menubar/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-menubar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-menubar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-menubar/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-menubar/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-menubar/karma.conf.js"
           }
         }
       }

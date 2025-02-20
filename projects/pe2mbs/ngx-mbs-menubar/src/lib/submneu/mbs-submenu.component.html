@@ -1,9 +1,0 @@
-<ul class="dropdown-content" #dropdown_content>
-    <li *ngFor="let item of items">
-        <a [href]="item.link || '#'" [mbsSubmenuDropOpen]="item.children" mode="submenu">
-            <i *ngIf="item.icon" [class]="'menu-icon fa ' + item.icon"></i>
-            <span style="padding-right: 30px;">{{ item.caption }}</span>
-            <i *ngIf="item.children" class="menubar-icon fas fa-chevron-right"></i>
-        </a>
-    </li>
-</ul>

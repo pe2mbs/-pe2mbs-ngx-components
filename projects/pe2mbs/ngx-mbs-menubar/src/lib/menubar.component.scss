@@ -1,0 +1,112 @@
+@use 'sass:math';
+
+$border-radius: 2px;
+$spacer:        1rem;
+
+
+.mbs-menubar 
+{
+    position: relative;
+    border-radius: $border-radius;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+}
+
+.mbs-menu-item 
+{
+    position: relative;
+}
+
+.mbs-menu-header 
+{
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    padding: math.div($spacer,2) $spacer;
+}
+
+.mbs-menu-link 
+{
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    min-width: 100px;
+    width: 100%;
+    padding: math.div($spacer,2) $spacer;
+    min-height: $spacer * 2.5;
+}
+
+.mbs-submenu 
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.mbs-menu-header i, .mbs-menu-link i 
+{
+    font-size: 1rem;
+    padding-right: 0.5rem;
+}
+
+.mbs-menu-text 
+{
+    width: 100%;
+    white-space: nowrap;
+}
+
+.mbs-menubar-panel .mbs-menu-text 
+{
+    white-space: normal;
+}
+
+.mbs-menubar-horizontal .mbs-submenu, .mbs-menubar-vertical .mbs-submenu 
+{
+    position: absolute;
+    z-index: 400;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    margin-top: -1px;
+    border-radius: $border-radius;
+}
+
+.mbs-menu-icon 
+{
+    float: right;
+    padding-left: 0.5rem;
+    width: 24px;
+}
+
+.menu-icon
+{
+    padding-left: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.mbs-menubar-horizontal 
+{
+    width: 100%;
+    display: flex;
+
+    > .mbs-menu-item > .mbs-submenu 
+    {
+        margin-top: 0px;
+        margin-left: -1px;
+    }
+}
+
+.mbs-menubar-panel .mbs-submenu 
+{
+    padding-left: $spacer;
+}
+
+.mbs-item-icon
+{
+    width: 24px;
+    height: 24px;
+    padding-right: 20px;
+}

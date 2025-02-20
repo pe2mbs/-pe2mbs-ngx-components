@@ -1,9 +1,0 @@
-<mat-radio-group aria-labelledby="Select Language" class="select-language"
-                                [(ngModel)]="selectedTheme">
-    <mat-radio-button class="select-language-radio-button" style="margin-right: 10px;"
-                        *ngFor="let theme of themes" [value]="theme"
-                        (change)="selectTheme( $event )">
-
-        {{ theme.displayName }}
-    </mat-radio-button>
-</mat-radio-group>

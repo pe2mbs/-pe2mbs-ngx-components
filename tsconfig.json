@@ -28,6 +28,14 @@
         "dist/pe2mbs/ngx-mbs-header/pe2mbs-ngx-mbs-header",
         "dist/pe2mbs/ngx-mbs-header"
       ],
+      "@pe2mbs/ngx-mbs-horizonal-menu": [
+        "dist/pe2mbs/ngx-mbs-horizonal-menu/pe2mbs-ngx-mbs-horizonal-menu",
+        "dist/pe2mbs/ngx-mbs-horizonal-menu"
+      ],
+      "@pe2mbs/ngx-mbs-theme-select": [
+        "dist/pe2mbs/ngx-mbs-theme-select/pe2mbs-ngx-mbs-theme-select",
+        "dist/pe2mbs/ngx-mbs-theme-select"
+      ],
       "@pe2mbs/ngx-mbs-vtoolbar": [
         "dist/pe2mbs/ngx-mbs-vtoolbar/pe2mbs-ngx-mbs-vtoolbar",
         "dist/pe2mbs/ngx-mbs-vtoolbar"

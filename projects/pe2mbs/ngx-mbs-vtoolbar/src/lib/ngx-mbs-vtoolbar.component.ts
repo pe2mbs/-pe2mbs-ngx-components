@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
+
 @Component({
     selector: 'mbs-vtoolbar',
     template: `<div class="vsidebar" [ngClass]="uiClass">
