@@ -25,6 +25,7 @@ import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
         MbsVtoolbarModule,
         MbsThemeSelectModule,
         FontAwesomeModule,
+        MonacoEditorModule.forRoot() // use forRoot() in main app module only.
     ],
     exports:[
         FontAwesomeModule

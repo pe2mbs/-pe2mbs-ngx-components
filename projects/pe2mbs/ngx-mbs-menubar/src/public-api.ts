@@ -1,7 +1,7 @@
 /*
- * Public API Surface of ngx-mbs-horizonal-menu
+ * Public API Surface of ngx-mbs-menubar
  */
 
-export * from './lib/ngx-mbs-horizonal-menu.service';
-export * from './lib/ngx-mbs-horizonal-menu.component';
-export * from './lib/ngx-mbs-horizonal-menu.module';
+export * from './lib/ngx-mbs-menubar.service';
+export * from './lib/ngx-mbs-menubar.component';
+export * from './lib/ngx-mbs-menubar.module';

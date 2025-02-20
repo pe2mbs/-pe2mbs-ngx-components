@@ -2,7 +2,7 @@ import { Directive, HostListener, Input, AfterViewInit, ComponentRef, ElementRef
          EventEmitter, Output, OnDestroy } from "@angular/core";
 import { OverlayRef, Overlay, OverlayPositionBuilder } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
-import { MbsMenubarComponent } from "./ngx-mbs-horizonal-menu.component";
+import { MbsMenubarComponent } from "./ngx-mbs-menubar.component";
 import { Subscription } from "rxjs";
 import { ConnectedPosition } from "@angular/cdk/overlay";
 import { IMbsMenuItem } from "./ngx-mbs-base-item";

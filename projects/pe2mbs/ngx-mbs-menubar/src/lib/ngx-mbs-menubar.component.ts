@@ -2,7 +2,7 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, Output,
          EventEmitter, AfterContentInit, OnDestroy, 
          OnInit} from "@angular/core";
 import { Subscription } from "rxjs";
-import { MbsMenuService } from "./ngx-mbs-horizonal-menu.service";
+import { MbsMenuService } from "./ngx-mbs-menubar.service";
 import { IMbsMenuItem, TMenuDirection } from "./ngx-mbs-base-item";
 
 

@@ -5,11 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './test-editor.component.html',
   styleUrls: ['./test-editor.component.scss']
 })
-export class TestEditorComponent implements OnInit {
+export class TestEditorComponent implements OnInit 
+{
+    editorOptions = {theme: 'vs-dark', language: 'javascript'};
+    code: string= 'function x() {\nconsole.log("Hello world!");\n}';
 
-  constructor() { }
+    constructor() 
+    { 
+        return;
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void 
+    {
+        return;
+    }
 
 }

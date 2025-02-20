@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MbsMenubarComponent } from './ngx-mbs-horizonal-menu.component';
+import { MbsMenubarComponent } from './ngx-mbs-menubar.component';
 import { MbsMenuItemComponent } from './menu-item/menu-item.component';
 import { MbsPanelMenuItemComponent } from './panel-menu-item/panel-menu-item.component';
-import { MbsMenuService } from './ngx-mbs-horizonal-menu.service';
+import { MbsMenuService } from './ngx-mbs-menubar.service';
 import { MbsPopupMenubarDirective } from './popup-menubar.directive';
 import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
