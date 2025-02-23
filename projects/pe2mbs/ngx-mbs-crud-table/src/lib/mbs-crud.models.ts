@@ -1,6 +1,6 @@
 
 
-export interface IColumnButton
+export interface IMbsColumnButton
 {
     icon:           string;
     action:         any;
@@ -8,7 +8,7 @@ export interface IColumnButton
 };
 
 
-export interface IColumn
+export interface IMbsColumn
 {
     field:          string;
     caption:        string;
@@ -18,12 +18,12 @@ export interface IColumn
     filter?:        boolean; 
     fixed?:         boolean;
     index?:         number;
-    buttons?:       Array<IColumnButton>;
-    currentFilter?: IFilterSettings;
+    buttons?:       Array<IMbsColumnButton>;
+    currentFilter?: IMbsFilterSettings;
 };
 
 
-export interface IActionButton
+export interface IMbsActionButton
 {
     icon:           string;
     action:         any;
@@ -31,7 +31,7 @@ export interface IActionButton
 };
 
 
-export enum EFilterModes
+export enum EMbsFilterModes
 {
     Cleared = 0,
     Contains = 1,
@@ -44,76 +44,76 @@ export enum EFilterModes
 };
 
 
-export interface IFilterMode
+export interface IMbsFilterMode
 {
-    value:          EFilterModes;
+    value:          EMbsFilterModes;
     label:          string;
 };
 
 
-export interface IFilterSettings
+export interface IMbsFilterSettings
 {
     column:         string;
-    mode:           EFilterModes;
+    mode:           EMbsFilterModes;
     value:          string | number | Date;
 };
 
 
-export interface IFilterRequest
+export interface IMbsFilterRequest
 {
     element:        any;
-    column:         IColumn;
+    column:         IMbsColumn;
     filterList?:    Array<string>;
 };
 
 
-export interface ISortInformation
+export interface IMbsSortInformation
 {
     column:     string;
     algorithm:  'asc' | 'desc';
 };
 
 
-export interface IPagedRequest
+export interface IMbsPagedRequest
 {
     page:       number;
     pageSize:   number;
     cached:     boolean;
-    sorted?:    ISortInformation;
-    filters?:   Array<IFilterSettings>;
+    sorted?:    IMbsSortInformation;
+    filters?:   Array<IMbsFilterSettings>;
     suppress?:  Array<string>;
 };
 
 
-export interface IPagesResponse<T>
+export interface IMbsPagesResponse<T>
 {
     count:      number;
     records:    Array<T>;
 };
 
 
-export interface ICrudStatus
+export interface IMbsCrudStatus
 {
     status:   boolean;
     message?: string;
 };
 
 
-export interface ISelectList
+export interface IMbsSelectList
 {
     id:       number;     // The record id (primary key)
     value:    string | number | Date;
 };
 
 
-export interface IGcColumnOptions
+export interface IMbsColumnOptions
 {
-    columns:     Array<IColumn>;
+    columns:     Array<IMbsColumn>;
     edit:        boolean;  
 };
 
 
-export interface IRouteParameters
+export interface IMbsRouteParameters
 {
     id:          string;
     vslue:       any;
@@ -121,7 +121,7 @@ export interface IRouteParameters
     caption?:    boolean;
 };
 
-export interface ICrudRights
+export interface IMbsCrudRights
 {
     create:   boolean;
     read:     boolean;
@@ -129,19 +129,19 @@ export interface ICrudRights
     delete:   boolean;
 };
 
-export interface ITableView
+export interface IMbsTableView
 {
-    columns?:  Array<IColumn>;
+    columns?:  Array<IMbsColumn>;
     pagesize?: number;
 }
 
-export interface IComponentInfo
+export interface IMbsComponentInfo
 {
-    rights:    ICrudRights;
-    table?:    ITableView;
+    rights:    IMbsCrudRights;
+    table?:    IMbsTableView;
 };
 
-export const CCrudDefaultRights: ICrudRights = 
+export const CMbsCrudDefaultRights: IMbsCrudRights = 
 {
     create:   true,
     read:     true,

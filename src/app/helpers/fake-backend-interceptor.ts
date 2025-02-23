@@ -5,6 +5,8 @@ import { delay } from 'rxjs/operators';
 import { INewMessages } from 'projects/pe2mbs/ngx-mbs-newsbar/src/public-api';
 import { IMbsMenuItem } from 'projects/pe2mbs/ngx-mbs-menubar/src/lib/ngx-mbs-base-item';
 import { IMbsThemeItem } from 'projects/pe2mbs/ngx-mbs-theme-select/src/public-api';
+import { FakeCrudBackend } from 'projects/pe2mbs/ngx-mbs-crud-table/src/lib/mbs-fake-crud';
+import { FakeSample_Data } from './fake-backend_sample_data';
 
 
 const FakeMenu: Array<IMbsMenuItem> = [
@@ -147,11 +149,11 @@ const themes: IMbsThemeItem[] = [
 })
 export class FakeBackendInterceptor implements HttpInterceptor 
 {
-    // private backends: Array<FakeCrudBackend<any>> = new Array<FakeCrudBackend<any>>();
+    private backends: Array<FakeCrudBackend<any>> = new Array<FakeCrudBackend<any>>();
     constructor()
     {
         // console.log("FakeBackendInterceptor");
-        // this.backends.push( new FakePeriodicElement() );
+        this.backends.push( new FakeSample_Data() );
         // this.backends.push( new FakeUsers() );
         return;
     }
@@ -162,15 +164,15 @@ export class FakeBackendInterceptor implements HttpInterceptor
         * 
         */
         const { url, method, headers, body } = request;
-        // for ( let i = 0; i < this.backends.length; i++ )
-        // {
-        //     // console.log( url, ' => ', this.backends[ i ].uri )
-        //     if ( url.startsWith( this.backends[ i ].uri ) )
-        //     {
-        //         // Found fake CRUD class 
-        //         return this.backends[ i ].handleRoute( request, next )
-        //     }   
-        // }
+        for ( let i = 0; i < this.backends.length; i++ )
+        {
+            // console.log( url, ' => ', this.backends[ i ].uri )
+            if ( url.startsWith( this.backends[ i ].uri ) )
+            {
+                // Found fake CRUD class 
+                return this.backends[ i ].handleRoute( request, next )
+            }   
+        }
         return handleRoute( url, method, headers, body );
     
         function handleRoute( url: string, method: string, headers: any, body: string ) 

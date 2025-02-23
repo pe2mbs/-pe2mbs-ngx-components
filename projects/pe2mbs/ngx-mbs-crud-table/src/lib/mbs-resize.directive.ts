@@ -3,9 +3,9 @@ import { fromEvent, Observable, Subscription } from "rxjs";
   
 
 @Directive( {
-    selector: "[tableResize]",
+    selector: "[mbsTableResize]",
 } )
-export class NgxCrudTableResizeDirective implements AfterViewInit, OnDestroy, OnInit
+export class MbsCrudTableResizeDirective implements AfterViewInit, OnDestroy, OnInit
 {
     /*
     *    This directive provide a resizing option to the mat-table

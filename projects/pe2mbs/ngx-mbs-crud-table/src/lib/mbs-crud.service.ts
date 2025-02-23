@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICrudStatus, IPagedRequest, IPagesResponse, ISelectList } from './ngx-crud.models';
+import { IMbsCrudStatus, IMbsPagedRequest, IMbsPagesResponse, IMbsSelectList } from './mbs-crud.models';
 
 
-export class NgxCrudService<T> 
+export class MbsCrudService<T> 
 {
     /**
     *   CRUD base service class 
@@ -42,25 +42,25 @@ export class NgxCrudService<T>
     }
 
     // CREATE
-    public put( record: T ): Observable<ICrudStatus>
+    public put( record: T ): Observable<IMbsCrudStatus>
     {
         /*
         * Create new record in the database
         */
-        return ( this.http.post<ICrudStatus>( this.composeUri( 'put' ), record ) );
+        return ( this.http.post<IMbsCrudStatus>( this.composeUri( 'put' ), record ) );
     }
 
     // READ
-    public paged( parameters: IPagedRequest ): Observable<IPagesResponse<T>>
+    public paged( parameters: IMbsPagedRequest ): Observable<IMbsPagesResponse<T>>
     {
         /*
         * Retrieve a paged list 
         */
         // Here the page and pageSize are not used.
-        return ( this.http.post<IPagesResponse<T>>( this.composeUri( 'paged' ), parameters ) );
+        return ( this.http.post<IMbsPagesResponse<T>>( this.composeUri( 'paged' ), parameters ) );
     }
 
-    public all( parameters: IPagedRequest ): Observable<Array<T>>
+    public all( parameters: IMbsPagedRequest ): Observable<Array<T>>
     {
         /*
         * Retrieve a full record list 
@@ -78,14 +78,14 @@ export class NgxCrudService<T>
         return ( this.http.post<T>( this.composeUri( 'get' ), { id } ) );
     }
 
-    public select( ): Observable<Array<ISelectList>>
+    public select( ): Observable<Array<IMbsSelectList>>
     {
         /*
         * This returns a list with objects containing id and value
         *
         *
         */
-        return ( this.http.post<Array<ISelectList>>( this.composeUri( 'select' ), {} ) );
+        return ( this.http.post<Array<IMbsSelectList>>( this.composeUri( 'select' ), {} ) );
     }
 
     // UPDATE
@@ -98,8 +98,8 @@ export class NgxCrudService<T>
     }
 
     // DELETE
-    public delete( id: number ): Observable<ICrudStatus>
+    public delete( id: number ): Observable<IMbsCrudStatus>
     {
-        return ( this.http.post<ICrudStatus>( this.composeUri( 'delete' ), { id } ) );
+        return ( this.http.post<IMbsCrudStatus>( this.composeUri( 'delete' ), { id } ) );
     }
 }

@@ -1,14 +1,14 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
-import { NgxCrudFilterDialog } from "./ngx-filter.dialog";
-import { EFilterModes, IFilterRequest, IFilterSettings } from "./ngx-crud.models";
+import { MbsCrudFilterDialog } from "./mbs-filter.dialog";
+import { EMbsFilterModes, IMbsFilterRequest, IMbsFilterSettings } from "./mbs-crud.models";
 
 
 
 @Directive({
-    selector: '[matFilter]',
+    selector: '[mbsFilter]',
 })
-export class NgxCrudFilterDirective implements OnInit
+export class MbsCrudFilterDirective implements OnInit
 {
     @Output()   confirm = new EventEmitter<any>();
     @Input()    columnInfo: any; 
@@ -18,12 +18,12 @@ export class NgxCrudFilterDirective implements OnInit
 
     @HostListener('click') doConfirm() 
     {
-        const dialogRef = this.dialog.open( NgxCrudFilterDialog, { data: {
+        const dialogRef = this.dialog.open( MbsCrudFilterDialog, { data: {
             element:    this.element,
             column:     this.columnInfo,
-        } as IFilterRequest } );
-        dialogRef.afterClosed().subscribe( ( filter: IFilterSettings ) => {
-            if ( filter.mode == EFilterModes.Cleared )
+        } as IMbsFilterRequest } );
+        dialogRef.afterClosed().subscribe( ( filter: IMbsFilterSettings ) => {
+            if ( filter.mode == EMbsFilterModes.Cleared )
             {
                 this.render.setStyle( this.element.nativeElement, 'color', this.colors[ 0 ] );
             }

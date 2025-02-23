@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, OnInit } from "@angular/core";
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { EFilterModes, IColumn, IFilterMode, IFilterRequest, IFilterSettings } from "./ngx-crud.models";
+import { EMbsFilterModes, IMbsColumn, IMbsFilterMode, IMbsFilterRequest, IMbsFilterSettings } from "./mbs-crud.models";
 
 
 interface IWindowSize
@@ -11,28 +11,28 @@ interface IWindowSize
 
 
 @Component( {
-    selector: 'ngx-filter-dialog',
-    templateUrl: 'ngx-filter.dialog.html',
+    selector: 'mbs-filter-dialog',
+    templateUrl: 'mbs-filter.dialog.html',
 } )
-export class NgxCrudFilterDialog implements OnInit 
+export class MbsCrudFilterDialog implements OnInit 
 {
     private dialogWidth: number = 400;
     private elementRef: ElementRef;
-    public selectMode: number = EFilterModes.Contains;
-    public filterModes: Array<IFilterMode> = [
-        { value: EFilterModes.Contains, label: 'Contains' },
-        { value: EFilterModes.Equal, label: 'Equal' },
-        { value: EFilterModes.NoEqual, label: 'Not equal' },
-        { value: EFilterModes.Startswith, label: 'Starts with' },
-        { value: EFilterModes.Endswith, label: 'Ends with' },
-        { value: EFilterModes.Empty, label: 'Empty' },
-        { value: EFilterModes.NotEmpty, label: 'Not empty' },
+    public selectMode: number = EMbsFilterModes.Contains;
+    public filterModes: Array<IMbsFilterMode> = [
+        { value: EMbsFilterModes.Contains, label: 'Contains' },
+        { value: EMbsFilterModes.Equal, label: 'Equal' },
+        { value: EMbsFilterModes.NoEqual, label: 'Not equal' },
+        { value: EMbsFilterModes.Startswith, label: 'Starts with' },
+        { value: EMbsFilterModes.Endswith, label: 'Ends with' },
+        { value: EMbsFilterModes.Empty, label: 'Empty' },
+        { value: EMbsFilterModes.NotEmpty, label: 'Not empty' },
     ]; 
     public filterValue: string | number | Date = ''
-    public column: IColumn; 
+    public column: IMbsColumn; 
 
-    constructor( private readonly mat_dialog_ref: MatDialogRef<NgxCrudFilterDialog>,
-                 @Inject(MAT_DIALOG_DATA) data: IFilterRequest ) 
+    constructor( private readonly mat_dialog_ref: MatDialogRef<MbsCrudFilterDialog>,
+                 @Inject(MAT_DIALOG_DATA) data: IMbsFilterRequest ) 
     {
         this.elementRef = data.element;
         this.column     = data.column;
@@ -41,14 +41,14 @@ export class NgxCrudFilterDialog implements OnInit
 
     public apply(): void
     {
-        this.mat_dialog_ref.close( { column: this.column.field, value: this.filterValue, mode: this.selectMode } as IFilterSettings );
+        this.mat_dialog_ref.close( { column: this.column.field, value: this.filterValue, mode: this.selectMode } as IMbsFilterSettings );
     }
         
     public cancel(): void 
     {
         // This clears the filter, when it was active
         this.filterValue = '';
-        this.mat_dialog_ref.close( { column: this.column.field, value: this.filterValue, mode: EFilterModes.Cleared } as IFilterSettings );
+        this.mat_dialog_ref.close( { column: this.column.field, value: this.filterValue, mode: EMbsFilterModes.Cleared } as IMbsFilterSettings );
     }
 
     public ngOnInit() 
@@ -69,11 +69,11 @@ export class NgxCrudFilterDialog implements OnInit
         if ( this.column.currentFilter )
         {
             this.filterValue = this.column.currentFilter.value;
-            this.selectMode = ( this.filterValue == EFilterModes.Cleared ? EFilterModes.Contains: this.column.currentFilter.mode );
+            this.selectMode = ( this.filterValue == EMbsFilterModes.Cleared ? EMbsFilterModes.Contains: this.column.currentFilter.mode );
         }
         else
         {
-            this.selectMode = EFilterModes.Contains;
+            this.selectMode = EMbsFilterModes.Contains;
             this.filterValue = '';
         }
         return;

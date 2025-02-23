@@ -2,20 +2,20 @@ import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
-import { IPagedRequest, IPagesResponse } from "./ngx-crud.models";
-import { NgxCrudService } from "./ngx-crud.service";
+import { IMbsPagedRequest, IMbsPagesResponse } from "./mbs-crud.models";
+import { MbsCrudService } from "./mbs-crud.service";
 
 
 
-export class NgxCrudDataSource<T> implements DataSource<T>
+export class MbsCrudDataSource<T> implements DataSource<T>
 {
-    private tableSubject    = new BehaviorSubject<T[]>([]);
-    private loadingSubject  = new BehaviorSubject<boolean>(false);
+    public tableSubject    = new BehaviorSubject<T[]>([]);
+    public loadingSubject  = new BehaviorSubject<boolean>(false);
     
     public loading$         = this.loadingSubject.asObservable();
     public paginator!:      MatPaginator;
     
-    constructor( private crudService: NgxCrudService<T> ) 
+    constructor( private crudService: MbsCrudService<T> ) 
     {
         return;
     }
@@ -32,13 +32,13 @@ export class NgxCrudDataSource<T> implements DataSource<T>
         return;
     }
 
-    public load( paged_parameters: IPagedRequest ) 
+    public load( paged_parameters: IMbsPagedRequest ) 
     {
         this.loadingSubject.next( true );
         this.crudService.paged( paged_parameters ).pipe( catchError( () => of( [] ) ),
             finalize(() => this.loadingSubject.next( false) )
             
-        ).subscribe( ( response: IPagesResponse<T> | any ) => { 
+        ).subscribe( ( response: IMbsPagesResponse<T> | any ) => { 
             this.tableSubject.next( response.records ); 
             if ( this.paginator )
             {

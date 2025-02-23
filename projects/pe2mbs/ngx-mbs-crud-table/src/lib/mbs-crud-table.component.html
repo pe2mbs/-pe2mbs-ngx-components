@@ -1,21 +1,21 @@
 <div style="height: 100%;">
     <div class="table-header">
-        <div class="title">Title</div>
+        <div class="title"><ng-content select="crud-header-title"></ng-content></div>
         <div class="action">
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageEvent( $event )"
                         aria-label="Select page of periodic elements">
             </mat-paginator>
             <div style="padding-top: 8px;">
-                <button class="table-header-icon-button" (click)="onViewSettings( $event )" ><mat-icon>settings</mat-icon></button>
-                <button class="table-header-icon-button" *ngIf="autoRefresh > 0" (click)="onAutoRefresh( $event )" ><mat-icon>history</mat-icon></button>
-                <button class="table-header-icon-button" [disabled]="this.timerHandle !== undefined" (click)="refresh( $event )" ><mat-icon>refresh</mat-icon></button>
-                <button class="table-header-icon-button" *ngFor="let hButton of headerButtons; let idx = index;" [disabled]="hButton.disabled" (click)="hButton.action( $event )" ><mat-icon>{{ hButton.icon }}</mat-icon></button>
+                <mbs-table-button tooltip="Edit table view configuration" (click)="onViewSettings( $event )" icon="settings"></mbs-table-button>
+                <mbs-table-button tooltip="Auto refresh data, every {{autoRefresh}} seconds" *ngIf="autoRefresh > 0" (click)="onAutoRefresh( $event )" icon="history"></mbs-table-button>
+                <mbs-table-button tooltip="Refresh data" [disabled]="this.timerHandle !== undefined" (click)="refresh( $event )" icon="refresh"></mbs-table-button>
+                <ng-content select="crud-header-buttons"></ng-content>
             </div>
         </div>
     </div>
     <!-- TODO: Make sure that scrolling occurs when to many columns or rows -->
     <div class="table-container">
-        <mat-table [dataSource]="dataSource" [tableResize]="resize" [widthColumns]="widthColumns" matSort (matSortChange)="onSortChange($event)">
+        <mat-table [dataSource]="dataSource" [mbsTableResize]="resize" [widthColumns]="widthColumns" matSort (matSortChange)="onSortChange($event)">
             <ng-container *ngFor="let column of this.columns.slice( 0, this.columns.length - 1 ); let i = index" [matColumnDef]="column.field">
                 <th mat-header-cell *matHeaderCellDef [width]="column.width">
                     <div style="display: flex; width: 100%;">
@@ -23,7 +23,7 @@
                             {{ column.caption }}
                         </div>
                         <div *ngIf="column.filter" style="display: flex; flex-direction: row;">
-                            <button class="simple-icon-button" matFilter [columnInfo]="column" (confirm)="onFilter( $event )" [filterColor]="filterColor">
+                            <button class="simple-icon-button" mbsFilter [columnInfo]="column" (confirm)="onFilter( $event )" [filterColor]="filterColor">
                                 <mat-icon style="font-size: 16px;padding-top: 4px;">settings</mat-icon>
                             </button>
                         </div>
@@ -44,6 +44,11 @@
         </mat-table>
     </div>
     <div class="table-footer">
-        FOOTER
+        <div class="caption">
+            <ng-content select="crud-footer-caption"></ng-content>
+        </div>
+        <div class="action">
+            <ng-content select="crud-footer-buttons"></ng-content>
+        </div>
     </div>
 </div>

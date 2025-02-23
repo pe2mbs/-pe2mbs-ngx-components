@@ -1,49 +1,48 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnDestroy, OnInit, Renderer2, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTable } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
-import { BehaviorSubject, fromEvent, merge, Observable, Subscription } from "rxjs";
+import { BehaviorSubject, fromEvent, merge, Subscription } from "rxjs";
 import { tap } from 'rxjs/operators';
-import { CCrudDefaultRights, EFilterModes, IActionButton, IColumn, IComponentInfo, ICrudRights, 
-         IFilterSettings, IGcColumnOptions, IPagedRequest, IRouteParameters } from "./ngx-crud.models";
+import { CMbsCrudDefaultRights, EMbsFilterModes, IMbsColumn, IMbsComponentInfo, IMbsCrudRights, 
+         IMbsFilterSettings, IMbsColumnOptions, IMbsPagedRequest, IMbsRouteParameters } from "./mbs-crud.models";
 import { ChangeDetectorRef } from '@angular/core';
-import { NgxCrudTableResizeDirective } from "./ngx-resize.directive";
-import { NgxCrudDataSource } from "./ngx-crud.datasource";
-import { NgxColumnOptionsDialog } from "./ngx-column.options.component";
-import { NgxStorageInterface } from "./ngx-abscract-storage.interface";
+import { MbsCrudTableResizeDirective } from "./mbs-resize.directive";
+import { MbsCrudDataSource } from "./mbs-crud.datasource";
+import { MbsColumnOptionsDialog } from "./mbs-column.options.component";
+import { MbsStorageInterface } from "./mbs-abscract-storage.interface";
 
 
 @Component( {
-    selector: 'gc-generic-table',
-    templateUrl: './ngx-crud-table.component.html',
-    styleUrls: [ './ngx-crud-table.component.scss' ]
+    selector: 'mbs-generic-table',
+    templateUrl: './mbs-crud-table.component.html',
+    styleUrls: [ './mbs-crud-table.component.scss' ]
 } )
-export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
+export class MbsCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
 {
     @ViewChild( MatTable,               { read: ElementRef } )  private matTableRef!: ElementRef;
     @ViewChild( MatPaginator,           { static: true } )      private paginator!: MatPaginator;
     @ViewChild( MatSort,                { static: true } )      private sort!: MatSort;
-    @ViewChild( NgxCrudTableResizeDirective, { static: true } )      private resizeTable!: NgxCrudTableResizeDirective;
+    @ViewChild( MbsCrudTableResizeDirective, { static: true } )      private resizeTable!: MbsCrudTableResizeDirective;
     
     @Input()                            tableName!: string    
     @Input()                            filterColor!: string 
-    @Input()                            dataSource!: NgxCrudDataSource<any>;
-    @Input()                            columns!: IColumn[];
-    @Input()                            headerButtons: IActionButton[] = []
+    @Input()                            dataSource!: MbsCrudDataSource<any>;
+    @Input()                            columns!: IMbsColumn[];
     @Input()                            autoRefresh: number = 0;
     @Input()                            resize: boolean = false;
-    @Input()                            parameters!: IRouteParameters; 
-    @Input()                            storageInterface!: NgxStorageInterface; 
+    @Input()                            parameters!: IMbsRouteParameters; 
+    @Input()                            storageInterface!: MbsStorageInterface; 
 
-    public                              rights: ICrudRights = CCrudDefaultRights;
+    public                              rights: IMbsCrudRights = CMbsCrudDefaultRights;
     public displayedColumns:            string[] = [];
     private subscription$:              Array<Subscription> = [];
     private filter:                     BehaviorSubject<any> = new BehaviorSubject<any>( null );
     public timerHandle:                 any | undefined = undefined;
     public widthColumns:                Array<string> = [];
-    public pageInfo: IPagedRequest = {
+    public pageInfo: IMbsPagedRequest = {
         page: 1,
         pageSize: 10,
         cached: false,
@@ -52,7 +51,8 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
         suppress: undefined,
     }
     
-    constructor( private route: ActivatedRoute, private dialog: MatDialog, private cd: ChangeDetectorRef ) 
+    constructor( private route: ActivatedRoute, private dialog: MatDialog, 
+                 private cd: ChangeDetectorRef ) 
     { 
         return;
     }
@@ -60,15 +60,17 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
     public ngOnInit(): void 
     {       
         this.subscription$.push( fromEvent( window, 'resize' ).subscribe( evt => {
-            console.log('table-resize:', evt );
             this.refreshDislay();
         } ) );
-        this.subscription$.push( this.route.queryParams.subscribe( (params:IRouteParameters | any) => {
+        this.subscription$.push( this.route.queryParams.subscribe( (params:IMbsRouteParameters | any) => {
 			if ( params.mode && params.mode == 'filter' ) 
 			{
                 this.parameters = params;
 			}
-		} ) )
+		} ) );
+        this.subscription$.push( this.dataSource.tableSubject.subscribe( () => {
+            this.updateDisplay( this.columns );
+        } ) )
         this.setDisplayedColumns();
         this.dataSource.paginator = this.paginator;
         this.paginator.pageSize = 5;
@@ -120,8 +122,7 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
         } );
         // @ts-ignore
         this.subscription$.push( merge( this.sort.sortChange, this.paginator.page, this.filter ).pipe( tap( () => {
-            console.log( "Reload data", this.timerHandle );
-            this.dataSource.load( this.pageInfo ); 
+            this.dataSource.load( this.pageInfo );
         } ) ).subscribe() ); 
         return;
     }
@@ -136,16 +137,16 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
         return;
     }
 
-    public onFilter( $event: IFilterSettings ): void
+    public onFilter( $event: IMbsFilterSettings ): void
     {
         this.pageInfo.filters = [];
         // Set the filter on the columns object and build new filter set for backend 
-        this.columns.forEach( (column: IColumn) => {
+        this.columns.forEach( (column: IMbsColumn) => {
             if ( column.field == $event.column )
             {
                 column.currentFilter = $event  
             }
-            if ( column.currentFilter && column.currentFilter.mode != EFilterModes.Cleared )
+            if ( column.currentFilter && column.currentFilter.mode != EMbsFilterModes.Cleared )
             {
                 this.pageInfo.filters?.push( column.currentFilter );
             }
@@ -158,13 +159,19 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
         return;
     }
 
+    public setFixedFilter( filter: IMbsFilterSettings )
+    {
+        this.pageInfo.filters?.push( );
+        this.filter.next( null );
+    }
+
     public onPageEvent( $event: any ): void 
     {
         // {previousPageIndex: 0, pageIndex: 0, pageSize: 10, length: 20}
         this.pageInfo.page     = this.paginator.pageIndex;
         if ( this.pageInfo.pageSize != this.paginator.pageSize )
         {
-            this.storeTableInfo()
+            this.storeTableInfo();
         }
         this.pageInfo.pageSize = this.paginator.pageSize;
         return
@@ -187,33 +194,39 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
 
     public onViewSettings( $event: any )
     {
-        const dialogRef = this.dialog.open( NgxColumnOptionsDialog, {
+        const dialogRef = this.dialog.open( MbsColumnOptionsDialog, {
             width: '50%',
             height: '60%',
             data: {
                 columns: this.columns.slice(),
                 edit: this.resize 
-            } as IGcColumnOptions
+            } as IMbsColumnOptions
         } );
         
         dialogRef.afterClosed().subscribe( result => {
             if ( result !== undefined ) 
             {
-                let dispColumns: string[] = [];
-                this.widthColumns = [];
-                result.forEach( (column:IColumn) => {
-                    this.columns.filter( value => column.field == value.field )[ 0 ].active = column.active;
-                    if ( column.active )
-                    {
-                        dispColumns.push( column.field );
-                        this.widthColumns.push( column.width );
-                    }
-                } ); 
-                this.storeTableInfo();
-                this.displayedColumns = dispColumns;
-                setTimeout( () =>  this.refreshDislay(), 0 );
+                this.updateDisplay( result );
             }
         } );
+        return;
+    }
+
+    private updateDisplay( result: IMbsColumn[] )
+    {
+        let dispColumns: string[] = [];
+        this.widthColumns = [];
+        result.forEach( (column:IMbsColumn) => {
+            this.columns.filter( value => column.field == value.field )[ 0 ].active = column.active;
+            if ( column.active )
+            {
+                dispColumns.push( column.field );
+                this.widthColumns.push( column.width );
+            }
+        } ); 
+        this.storeTableInfo();
+        this.displayedColumns = dispColumns;
+        setTimeout( () =>  this.refreshDislay(), 0 );
         return;
     }
 
@@ -237,7 +250,7 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
                     columns: this.columns,
                     pagesize: this.paginator.pageSize
                 }
-            } as IComponentInfo );
+            } as IMbsComponentInfo );
         }
         return;
     }
@@ -251,11 +264,11 @@ export class NgxCrudTableComponent implements OnInit, AfterViewInit, OnDestroy
                     columns: this.columns,
                     pagesize: this.paginator.pageSize
                 }
-            } as IComponentInfo ).subscribe( (info: IComponentInfo) => {
+            } as IMbsComponentInfo ).subscribe( (info: IMbsComponentInfo) => {
                 this.paginator.pageSize = this.pageInfo.pageSize = info.table?.pagesize as number;
                 let dispColumns: string[] = [];
                 this.widthColumns = [];
-                (info.table?.columns as Array<IColumn>).forEach( (col:IColumn) => {
+                (info.table?.columns as Array<IMbsColumn>).forEach( (col:IMbsColumn) => {
                     const column    = this.columns.filter( value => col.field == value.field )[ 0 ];
                     column.active   = col.active;
                     column.width    = col.width;

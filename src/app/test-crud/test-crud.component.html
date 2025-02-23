@@ -1,1 +1,14 @@
-<p>test-crud works!</p>
+<div style="height: 100%;"><mbs-generic-table filterColor="black,green" 
+            [dataSource]="dataSource" [columns]="columns" [resize]="true"
+            [autoRefresh]="10">
+    <crud-header-title>Overview</crud-header-title>
+    <crud-header-buttons>
+        <mbs-table-button icon="print" tooltip="Print some data" (click)="onClick( $event )"></mbs-table-button>
+        <mbs-table-button icon="info" tooltip="More information" (click)="onHelp( $event )"></mbs-table-button> 
+        <mbs-table-help topic="dummy"></mbs-table-help>
+    </crud-header-buttons>
+    <crud-footer-buttons>
+        <mbs-table-button icon="print" tooltip="Print some data" (click)="onClick( $event )"></mbs-table-button>
+    </crud-footer-buttons>
+    <crud-footer-caption>Footer info</crud-footer-caption>
+</mbs-generic-table></div>

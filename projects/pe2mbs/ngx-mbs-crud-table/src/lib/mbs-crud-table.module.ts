@@ -1,8 +1,4 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { NgxCrudTableComponent } from './ngx-crud-table.component';
-import { NgxCrudFilterDialog } from './ngx-filter.dialog';
-import { NgxCrudFilterDirective } from './ngx-filter.directive';
-import { NgxCrudTableResizeDirective } from './ngx-resize.directive';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,14 +12,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MbsCrudTableComponent } from './mbs-crud-table.component';
+import { MbsCrudFilterDialog } from './mbs-filter.dialog';
+import { MbsCrudFilterDirective } from './mbs-filter.directive';
+import { MbsCrudTableResizeDirective } from './mbs-resize.directive';
+import { MbsColumnOptionsDialog } from './mbs-column.options.component';
+import { MbsTableButton, MbsTableHelpButton } from './mbs-table-button-component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
     declarations: [
-        NgxCrudTableComponent,
-        NgxCrudFilterDialog,
-        NgxCrudFilterDirective,
-        NgxCrudTableResizeDirective,
+        MbsCrudTableComponent,
+        MbsCrudFilterDialog,
+        MbsCrudFilterDirective,
+        MbsCrudTableResizeDirective,
+        MbsColumnOptionsDialog,
+        MbsTableButton,
+        MbsTableHelpButton,
     ],
     imports: [
         CommonModule,
@@ -39,13 +45,17 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatButtonModule,
         MatIconModule,
         MatSortModule,
+        MatTooltipModule,
         MatDialogModule
     ],
     exports: [
-        NgxCrudTableComponent,
-        NgxCrudFilterDialog,
-        NgxCrudFilterDirective,
-        NgxCrudTableResizeDirective,
+        MbsCrudTableComponent,
+        MbsCrudFilterDialog,
+        MbsCrudFilterDirective,
+        MbsCrudTableResizeDirective,
+        MbsColumnOptionsDialog,
+        MbsTableButton,
+        MbsTableHelpButton,
     ],
     providers: [
         { 
@@ -57,5 +67,5 @@ import { MatDialogModule } from '@angular/material/dialog';
         CUSTOM_ELEMENTS_SCHEMA 
     ]
 })
-export class NgxCrudTableModule { }
+export class MbsCrudTableModule { }
 

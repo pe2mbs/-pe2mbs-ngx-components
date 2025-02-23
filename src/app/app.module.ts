@@ -17,7 +17,7 @@ import { MbsFooterModule } from 'projects/pe2mbs/ngx-mbs-footer/src/public-api';
 import { MbsHeaderModule } from 'projects/pe2mbs/ngx-mbs-header/src/public-api';
 import { MbsVtoolbarModule } from 'projects/pe2mbs/ngx-mbs-vtoolbar/src/public-api';
 import { IMbsThemeData, MbsThemeSelectModule } from 'projects/pe2mbs/ngx-mbs-theme-select/src/public-api';
-import { TestCrudComponent } from './test-crud/test-crud.component';
+import { DemoCrudService, TestCrudComponent } from './test-crud/test-crud.component';
 import { TestEditorComponent } from './test-editor/test-editor.component';
 import { TestDiffEditorComponent } from './test-diff-editor/test-diff-editor.component';
 import { MbsMenubarModule } from 'projects/pe2mbs/ngx-mbs-menubar/src/public-api';
@@ -26,6 +26,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
+import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/pu
         MbsOnePageModule,
         MbsVtoolbarModule,
         MbsThemeSelectModule,
+        MbsCrudTableModule,
         FontAwesomeModule,
         MonacoEditorModule.forRoot() // use forRoot() in main app module only.
     ],
@@ -63,8 +65,10 @@ import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/pu
     ],
     providers: [
         fakeBackendProvider,
+        DemoCrudService,
         { provide: 'MbsNewsFeedUri', useValue: '/api/rss/newsfeed' }, 
         { provide: 'MbsMenuUri', useValue: '/api/menu' },
+        { provide: 'MbsHelpUri', useValue: '/api/help' },
         { provide: 'MbsThemeData', useValue: { uri: '/api/theme',
                                                theme: { displayName: 'Light theme',
                                                         name: 'light-theme',

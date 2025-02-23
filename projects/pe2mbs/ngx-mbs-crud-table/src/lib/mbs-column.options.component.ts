@@ -1,24 +1,24 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { IColumn, IGcColumnOptions } from './ngx-crud.models';
+import { IMbsColumn, IMbsColumnOptions } from './mbs-crud.models';
 
 
 @Component({
-    selector: 'lib-column.options',
-    templateUrl: './ngx-column.options.component.html',
-    styleUrls: [ './ngx-column.options.component.scss' ],
+    selector: 'mbs-column.options',
+    templateUrl: './mbs-column.options.component.html',
+    styleUrls: [ './mbs-column.options.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgxColumnOptionsDialog
+export class MbsColumnOptionsDialog
 {
     public displayedColumns: string[] = ['select', 'caption', 'name', 'width' ];
-    public dataSource!: MatTableDataSource<IColumn>;
+    public dataSource!: MatTableDataSource<IMbsColumn>;
 
-    constructor( public dialogRef: MatDialogRef<NgxColumnOptionsDialog>,
-                 @Inject(MAT_DIALOG_DATA) public data: IGcColumnOptions ) 
+    constructor( public dialogRef: MatDialogRef<MbsColumnOptionsDialog>,
+                 @Inject(MAT_DIALOG_DATA) public data: IMbsColumnOptions ) 
     { 
-        this.dataSource = new MatTableDataSource<IColumn>( this.data.columns );
+        this.dataSource = new MatTableDataSource<IMbsColumn>( this.data.columns );
         return;
     }
    
@@ -29,7 +29,7 @@ export class NgxColumnOptionsDialog
         return ( numSelected === numRows );
     }
 
-    public onToggle( row: IColumn )
+    public onToggle( row: IMbsColumn )
     {
         row.active = !row.active;
         return;
@@ -57,6 +57,21 @@ export class NgxColumnOptionsDialog
     public onApprove(): void
     {
         this.dialogRef.close( this.dataSource.data );
+        return;
+    }
+
+    public ngOnInit(): void
+    {
+        if ( this.dataSource.data.length > 8 ) 
+        {
+            this.updateSize();
+        }
+        return;
+    }
+
+    public updateSize(): void 
+    {
+        this.dialogRef.updateSize( "60%", "80%" );
         return;
     }
 }

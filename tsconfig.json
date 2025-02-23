@@ -28,6 +28,10 @@
         "dist/pe2mbs/ngx-mbs-header/pe2mbs-ngx-mbs-header",
         "dist/pe2mbs/ngx-mbs-header"
       ],
+      "@pe2mbs/ngx-mbs-help": [
+        "dist/pe2mbs/ngx-mbs-help/pe2mbs-ngx-mbs-help",
+        "dist/pe2mbs/ngx-mbs-help"
+      ],
       "@pe2mbs/ngx-mbs-horizonal-menu": [
         "dist/pe2mbs/ngx-mbs-horizonal-menu/pe2mbs-ngx-mbs-horizonal-menu",
         "dist/pe2mbs/ngx-mbs-horizonal-menu"
@@ -55,6 +59,10 @@
       "ngx-library": [
         "dist/ngx-library/ngx-library",
         "dist/ngx-library"
+      ],
+      "ngx-mbs-help": [
+        "dist/ngx-mbs-help/ngx-mbs-help",
+        "dist/ngx-mbs-help"
       ]
     },
     "experimentalDecorators": true,

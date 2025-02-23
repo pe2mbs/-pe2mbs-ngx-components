@@ -1,0 +1,30 @@
+.table-icon-button
+{
+    border:                 none;
+    background:             none;
+    height:                 56px;
+    font-size:              28px;
+    font-weight:            500;
+    color:                  rgba(0, 0, 0, 0.54);
+    fill:                   currentColor;
+
+    &:focus
+    {
+        outline:                none; 
+    }
+
+    &:disabled
+    {
+        // TODO: Not perfect but gives proper feedback
+        color: lightgray !important;
+        transition-property: transform;
+        transition-duration: 0.25s;
+        transform: rotate(180deg); 
+    }
+
+    &:not(:disabled)
+    {
+        transition-property: none;
+        transform: none;
+    }
+}
