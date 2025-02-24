@@ -27,6 +27,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
+import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/publi
         MbsOnePageModule,
         MbsVtoolbarModule,
         MbsThemeSelectModule,
+        MbsHelpModule,
         MbsCrudTableModule,
         FontAwesomeModule,
         MonacoEditorModule.forRoot() // use forRoot() in main app module only.
@@ -68,7 +70,7 @@ import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/publi
         DemoCrudService,
         { provide: 'MbsNewsFeedUri', useValue: '/api/rss/newsfeed' }, 
         { provide: 'MbsMenuUri', useValue: '/api/menu' },
-        { provide: 'MbsHelpUri', useValue: '/api/help' },
+        { provide: 'MbsHelp', useValue: { uri: '/api/help' } },
         { provide: 'MbsThemeData', useValue: { uri: '/api/theme',
                                                theme: { displayName: 'Light theme',
                                                         name: 'light-theme',

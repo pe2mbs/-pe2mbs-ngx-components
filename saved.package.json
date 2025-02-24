@@ -36,7 +36,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "monaco-editor": "^0.50.0",
-    "ngx-markdown": "^12.1.0",
     "rxjs": "~6.6.0",
     "split.js": "^1.6.2",
     "tslib": "^2.3.0",

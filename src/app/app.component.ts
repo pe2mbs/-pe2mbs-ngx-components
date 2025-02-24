@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MbsHelpDialog } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
 import { environment } from 'src/environments/environment';
 
 
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit
     public version!: IApplicationVersion;
     public production: boolean = false;
 
-    constructor() 
+    constructor( private dialog: MatDialog ) 
     {        
         return;
     }
@@ -51,6 +53,8 @@ export class AppComponent implements OnInit
 
     public onClick(): void
     {
+        this.dialog.open( MbsHelpDialog, { height: '100%', width: '100%',data: 'helpme' } );
+        
         console.log( 'click' );
     }
 }

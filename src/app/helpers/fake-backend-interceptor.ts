@@ -143,6 +143,19 @@ const themes: IMbsThemeItem[] = [
     },
 ];
 
+const helpData: string = `# PE2MBS collection of standard components.
+
+## ngx-mbs-crud-table
+Standard implementation of the mat-table with;
+* Backend paging.
+* Backend column filter(s) on configurable columns.
+* Backend sorting on configurable columns.
+* Selectable visible columns.
+* Refresh and auto-refresh buttons
+
+## ngx-mbs-help
+`;
+
 
 @Injectable({
     providedIn: 'root'
@@ -199,6 +212,10 @@ export class FakeBackendInterceptor implements HttpInterceptor
                     version: '2.23.1234'
                 }
                 return ok( versionData );
+
+            case url.endsWith( '/api/help/helpme' ) && method === 'GET':
+                
+                return ok( helpData );
 
             default:
                 // pass through any requests not handled above

@@ -4,17 +4,16 @@ import { MbsHelpService } from './ngx-mbs-help.service';
 
 
 
+
 @NgModule({
     declarations: [
         MbsHelpDialog,
-    ],
-    imports: [
     ],
     exports: [
         MbsHelpDialog,
     ],
     providers:[
-        MbsHelpService,
+        MbsHelpService
     ]
 })
 export class MbsHelpModule { }
