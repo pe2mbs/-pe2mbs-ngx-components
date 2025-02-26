@@ -1,6 +1,7 @@
 @use 'projects/pe2mbs/ngx-mbs-newsbar/src/lib/mbs-newsbar-theme' as newsbar;
 @use 'projects/pe2mbs/ngx-mbs-vtoolbar/src/lib/_vtoolbar-theme.scss' as vtoolbar;
 @use 'projects/pe2mbs/ngx-mbs-menubar/src/lib/_menubar-theme.scss' as menubar;
+@use 'projects/pe2mbs/ngx-mbs-help/src/lib/_mbs-help-theme.scss' as helpdialog;
 
 
 @mixin custom-components( $theme )
@@ -8,4 +9,5 @@
     @include newsbar.mbs-newsbar-theme( $theme );
     @include vtoolbar.mbs-vtoolbar-theme( $theme );
     @include menubar.mbs-menubar-theme( $theme );
+    @include helpdialog.mbs-help-theme( $theme );
 }

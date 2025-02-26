@@ -1,15 +1,15 @@
 <div style="height: 100%;">
     <div class="table-header">
-        <div class="title"><ng-content select="crud-header-title"></ng-content></div>
+        <div class="title"><ng-content select="mbs-crud-header-title,[mbsCrudHeaderTitle]"></ng-content></div>
         <div class="action">
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageEvent( $event )"
                         aria-label="Select page of periodic elements">
             </mat-paginator>
-            <div style="padding-top: 8px;">
+            <div style="padding-top: 8px; display: flex; flex-direction: row;">
                 <mbs-table-button tooltip="Edit table view configuration" (click)="onViewSettings( $event )" icon="settings"></mbs-table-button>
                 <mbs-table-button tooltip="Auto refresh data, every {{autoRefresh}} seconds" *ngIf="autoRefresh > 0" (click)="onAutoRefresh( $event )" icon="history"></mbs-table-button>
                 <mbs-table-button tooltip="Refresh data" [disabled]="this.timerHandle !== undefined" (click)="refresh( $event )" icon="refresh"></mbs-table-button>
-                <ng-content select="crud-header-buttons"></ng-content>
+                <ng-content select="mbs-crud-header-button,[mbsCrudHeaderButton]"></ng-content>
             </div>
         </div>
     </div>
@@ -45,10 +45,10 @@
     </div>
     <div class="table-footer">
         <div class="caption">
-            <ng-content select="crud-footer-caption"></ng-content>
+            <ng-content select="mbs-crud-footer-title,[mbsCrudFooterTitle]"></ng-content>
         </div>
         <div class="action">
-            <ng-content select="crud-footer-buttons"></ng-content>
+            <ng-content select="mbs-crud-footer-button,[mbsCrudFooterButton]"></ng-content>
         </div>
     </div>
 </div>

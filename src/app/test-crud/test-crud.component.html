@@ -1,14 +1,13 @@
-<div style="height: 100%;"><mbs-generic-table filterColor="black,green" 
-            [dataSource]="dataSource" [columns]="columns" [resize]="true"
-            [autoRefresh]="10">
-    <crud-header-title>Overview</crud-header-title>
-    <crud-header-buttons>
+<div style="height: 100%;"><mbs-generic-table filterColor="black,green" [dataSource]="dataSource" 
+            [columns]="columns" [resize]="true" [autoRefresh]="10">
+    <div mbsCrudHeaderTitle>Overview</div>
+    <div mbsCrudHeaderButton>
         <mbs-table-button icon="print" tooltip="Print some data" (click)="onClick( $event )"></mbs-table-button>
-        <mbs-table-button icon="info" tooltip="More information" (click)="onHelp( $event )"></mbs-table-button> 
-        <mbs-table-help topic="dummy"></mbs-table-help>
-    </crud-header-buttons>
-    <crud-footer-buttons>
+        <mbs-table-button icon="info" tooltip="More information" (click)="onClick( $event )"></mbs-table-button> 
+        <mbs-table-button icon="help_outline" tooltip="Help me" mbsHelpTrigger="general"></mbs-table-button> 
+    </div>
+    <div mbsCrudFooterTitle>Footer info</div>
+    <div mbsCrudFooterButton>
         <mbs-table-button icon="print" tooltip="Print some data" (click)="onClick( $event )"></mbs-table-button>
-    </crud-footer-buttons>
-    <crud-footer-caption>Footer info</crud-footer-caption>
+    </div>
 </mbs-generic-table></div>

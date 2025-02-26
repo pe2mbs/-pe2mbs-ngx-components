@@ -1,0 +1,54 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import '~@angular/material/theming';
+
+
+$border-color: #9e9e9e;
+$outline-color: #a6d5fa;
+$yellow-color: #ffeb78;
+
+
+@mixin color($theme)
+{
+    $color_map:             map.get( $theme, color, primary );   
+    $background-color:      mat.get-color-from-palette( $color_map, lighter );
+    $defaultcolor:          mat.get-color-from-palette( $color_map, default-contrast );
+
+    $color_map_warn:        map.get( $theme, color, warn );   
+    $selected-color:        mat.get-color-from-palette($color_map_warn, 800 );
+
+    .help-header
+    {
+        color: $defaultcolor;
+        background-color: $background-color;
+    }
+
+    .help-footer
+    {
+        color: $defaultcolor;
+        background-color: $background-color;
+    }
+}
+
+
+@mixin typography($theme) 
+{
+    // Get the typography config from the theme.
+    $typography-config: mat.get-typography-config($theme);
+
+}
+  
+
+@mixin mbs-help-theme( $theme ) 
+{
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+  
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($theme);
+    }
+}
+

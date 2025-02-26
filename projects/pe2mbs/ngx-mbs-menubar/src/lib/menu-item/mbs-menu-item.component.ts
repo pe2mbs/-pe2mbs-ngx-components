@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { IMbsMenuItem, MbsMenuItemBase, TMenuDirection } from "../ngx-mbs-base-item";
+import { IMbsMenuItem, MbsMenuItemBase, TMenuDirection } from "../mbs-base-item";
 
 
 @Component({
     selector: "mbs-menu-item",
-    templateUrl: "./menu-item.component.html",
-    styleUrls: [ '../menubar.component.scss' ],
+    templateUrl: "./mbs-menu-item.component.html",
+    styleUrls: [ '../mbs-menubar.component.scss' ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
 })

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { IMbsActionButton, IMbsColumn, IMbsColumnButton, MbsCrudDataSource, MbsCrudService } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
+import { IMbsColumn, IMbsColumnButton, MbsCrudDataSource, MbsCrudService } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
 
 
 export interface ISample_Data
@@ -77,15 +77,15 @@ export class TestCrudComponent implements OnInit
             */
             { 
                 icon: 'edit', 
-                action: this.onHelp 
+                action: this.onClick 
             },
             { 
                 icon: 'print', 
-                action: this.onHelp 
+                action: this.onClick 
             },
             { 
                 icon: 'delete', 
-                action: this.onHelp 
+                action: this.onClick 
             },
             
         ] }
@@ -107,11 +107,6 @@ export class TestCrudComponent implements OnInit
         console.log( 'action', action, row );
         action.action( row );
         return;
-    }
-
-    public onHelp( $event: any )
-    {
-        console.log( 'help', $event );
     }
 
     public onClick( $event: any )

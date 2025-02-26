@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { MbsMenubarComponent } from './ngx-mbs-menubar.component';
-import { MbsMenuItemComponent } from './menu-item/menu-item.component';
-import { MbsPanelMenuItemComponent } from './panel-menu-item/panel-menu-item.component';
-import { MbsMenuService } from './ngx-mbs-menubar.service';
-import { MbsPopupMenubarDirective } from './popup-menubar.directive';
-import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { MbsMenuService } from './mbs-menubar.service';
+import { MbsMenubarComponent } from './mbs-menubar.component';
+import { MbsMenuItemComponent } from './menu-item/mbs-menu-item.component';
+import { MbsPanelMenuItemComponent } from './panel-menu-item/mbs-panel-menu-item.component';
+import { MbsPopupMenubarDirective } from './mbs-menubar-popup.directive';
+import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -31,7 +31,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
         MbsMenuItemComponent,
         MbsPanelMenuItemComponent,
         MbsPopupMenubarDirective,
-        FontAwesomeModule,
     ],
     providers: [
         MbsMenuService

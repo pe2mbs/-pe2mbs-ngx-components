@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-
 @NgModule({
     declarations: [
         MbsHeaderComponent
@@ -19,4 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
         MbsHeaderComponent
     ]
 })
-export class MbsHeaderModule { }
+export class MbsHeaderModule 
+{ 
+    
+}

@@ -17,8 +17,10 @@ import { MbsCrudFilterDialog } from './mbs-filter.dialog';
 import { MbsCrudFilterDirective } from './mbs-filter.directive';
 import { MbsCrudTableResizeDirective } from './mbs-resize.directive';
 import { MbsColumnOptionsDialog } from './mbs-column.options.component';
-import { MbsTableButton, MbsTableHelpButton } from './mbs-table-button-component';
+import { MbsTableButton } from './mbs-table-button-component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MbsCrudHeaderTitleDirective, MbsCrudHeaderButtonDirective } from './mbs-crud-header.directive';
+import { MbsCrudFooterTitleDirective, MbsCrudFooterButtonDirective } from './mbs-crud-footer.directive';
 
 
 @NgModule({
@@ -29,7 +31,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MbsCrudTableResizeDirective,
         MbsColumnOptionsDialog,
         MbsTableButton,
-        MbsTableHelpButton,
+        MbsCrudHeaderTitleDirective,
+        MbsCrudHeaderButtonDirective,
+        MbsCrudFooterTitleDirective,
+        MbsCrudFooterButtonDirective,
     ],
     imports: [
         CommonModule,
@@ -55,7 +60,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MbsCrudTableResizeDirective,
         MbsColumnOptionsDialog,
         MbsTableButton,
-        MbsTableHelpButton,
     ],
     providers: [
         { 

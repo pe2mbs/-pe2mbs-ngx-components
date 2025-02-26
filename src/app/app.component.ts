@@ -53,7 +53,6 @@ export class AppComponent implements OnInit
 
     public onClick(): void
     {
-        this.dialog.open( MbsHelpDialog, { height: '100%', width: '100%',data: 'helpme' } );
         
         console.log( 'click' );
     }

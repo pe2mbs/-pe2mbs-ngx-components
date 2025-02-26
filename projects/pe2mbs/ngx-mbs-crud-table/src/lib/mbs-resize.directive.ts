@@ -13,14 +13,13 @@ export class MbsCrudTableResizeDirective implements AfterViewInit, OnDestroy, On
     */ 
 
     @Input( "tableResize" )        enabled: boolean = true; 
-    isFixed:                       boolean       = false;
     @Input() disabled:             boolean       = false;
     @Input() height:               number        = 32; 
     @Input() color:                string        = 'gray';
     @Input() widthColumns:         Array<string> = [];
 
+    public isFixed:                boolean       = false;
     public table!:                 HTMLTableElement;
-
     private thCollection!:         HTMLCollectionOf<HTMLTableCellElement>;
     private th!:                   HTMLTableCellElement;
     private nextTh!:               HTMLTableCellElement;

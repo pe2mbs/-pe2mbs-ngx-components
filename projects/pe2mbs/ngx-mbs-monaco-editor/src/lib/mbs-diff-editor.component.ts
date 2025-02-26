@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, NgZone, inject } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { BaseEditor } from './base-editor';
-import { DiffEditorModel } from './types';
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './config';
+import { BaseEditor } from './mbs-base-editor';
+import { DiffEditorModel } from './mbs-types';
+import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
 
 
 declare var monaco: any;

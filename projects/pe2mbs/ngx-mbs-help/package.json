@@ -1,12 +1,15 @@
 {
-  "name": "@pe2mbs/ngx-mbs-help",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "ngx-markdown": "^12.1.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  }
+    "name": "@pe2mbs/ngx-mbs-help",
+    "version": "12.0.0",
+    "peerDependencies": {
+        "@angular/common": "^12.2.0",
+        "@angular/core": "^12.2.0",
+        "@angular/material": "^12.2.13",
+        "rxjs": "~6.6.0",
+        "@types/marked": "^4.0.2",
+        "marked": "^4.0.10"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
 }

@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, forwardRef, Inject, inject, Input, 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { fromEvent } from 'rxjs';
 
-import { BaseEditor } from './base-editor';
-import { NgxEditorModel } from './types';
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './config';
+import { BaseEditor } from './mbs-base-editor';
+import { NgxEditorModel } from './mbs-types';
+import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
 
 declare var monaco: any;
 

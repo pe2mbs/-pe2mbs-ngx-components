@@ -2,14 +2,14 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, Output,
          EventEmitter, AfterContentInit, OnDestroy, 
          OnInit} from "@angular/core";
 import { Subscription } from "rxjs";
-import { MbsMenuService } from "./ngx-mbs-menubar.service";
-import { IMbsMenuItem, TMenuDirection } from "./ngx-mbs-base-item";
+import { MbsMenuService } from "./mbs-menubar.service";
+import { IMbsMenuItem, TMenuDirection } from "./mbs-base-item";
 
 
 @Component({
     selector: "mbs-menubar",
-    templateUrl: "./menubar.component.html",
-    styleUrls: [ "./menubar.component.scss" ],
+    templateUrl: "./mbs-menubar.component.html",
+    styleUrls: [ "./mbs-menubar.component.scss" ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.Default,
 })

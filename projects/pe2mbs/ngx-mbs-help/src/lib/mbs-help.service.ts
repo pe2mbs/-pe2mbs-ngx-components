@@ -5,15 +5,7 @@ import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Renderer, marked } from 'marked';
 import { DomSanitizer } from '@angular/platform-browser'
-
-
-
-export interface IHelpInfo
-{
-    uri:              string;
-    sanitizeHtml:     boolean;
-    markedExtension?: marked.MarkedExtension;
-} 
+import { IHelpInfo } from './mbs-help.model';
 
 
 @Injectable({
@@ -116,9 +108,10 @@ export class MbsHelpService
     // comple markdown to html
     protected compile( data: string, sanitize = true ): string | null  
     {
+
         return ( this._domSanitizer.sanitize(
             sanitize ? SecurityContext.HTML : SecurityContext.NONE,
-            marked.parse(data).trim()
+            marked.parse( data ).trim()
         ) );
     }
 
@@ -126,6 +119,6 @@ export class MbsHelpService
     private handleError( error: HttpErrorResponse ): any 
     {
         const errMsg = error.message ? error.message : error.toString();
-        return throwError(errMsg);
+        return throwError( errMsg );
     }
 }
