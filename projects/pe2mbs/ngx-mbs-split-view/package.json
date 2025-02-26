@@ -1,29 +1,21 @@
 {
-  "name": "ngx-split-view",
+  "name": "@pe2mbs/ngx-mbs-split-view",
   "description": "A resizable flex-box split layout component for Angular",
-  "version": "1.0.1",
-  "keywords": [
-    "angular",
-    "component",
-    "split-view",
-    "split",
-    "layout",
-    "flex-box",
-    "resize"
-  ],
+  "version": "12.0.1",
+  "keywords": [ "Angular 12", "component", "split-view", "split", "layout", "flex-box", "resize" ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vishalmistry/ngx-split-view.git"
+    "url": "git+https://github.com/pe2mbs/-pe2mbs-ngx-components.git"
   },
   "bugs": {
-    "url": "https://github.com/vishalmistry/ngx-split-view/issues"
+    "url": "https://github.com/pe2mbs/-pe2mbs-ngx-components/issues"
   },
   "dependencies": {
     "split.js": "^1.6.2"
   },
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7"
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0"
   }
 }

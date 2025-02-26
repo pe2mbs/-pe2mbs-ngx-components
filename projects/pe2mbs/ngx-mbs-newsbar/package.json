@@ -1,6 +1,21 @@
 {
   "name": "@pe2mbs/ngx-newsbar",
   "version": "12.0.0",
+
+  "author": "Marc Bertens-Nguyen <m.bertens@pe2mbs.nl>",
+  "homepage": "hhttps://github.com/pe2mbs/-pe2mbs-ngx-components",
+  "description": "A simple yet powerful tree component for Angular 12",
+  "readme": "https://github.com/pe2mbs/-pe2mbs-ngx-components/blob/main/projects/pe2mbs/ngx-mbs-tree-component/README.md",
+
+  "keywords": [ "Angular 12", "newsbar", "resize" ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pe2mbs/-pe2mbs-ngx-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pe2mbs/-pe2mbs-ngx-components/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0",
