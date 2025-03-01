@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { MbsEditorModel } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 
 @Component({
-  selector: 'app-test-editor',
-  templateUrl: './test-editor.component.html',
-  styleUrls: ['./test-editor.component.scss']
+    selector:    'app-test-editor',
+    templateUrl: './test-editor.component.html',
 })
 export class TestEditorComponent implements OnInit 
 {
-    editorOptions = {theme: 'vs-dark', language: 'javascript'};
-    code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+    public editorOptions: MbsEditorModel = { theme: 'vs-dark', 
+                                             language: 'javascript', 
+                                             value: '' };
+    public code: string = 'function x() {\nconsole.log("Hello world!");\n}';
 
     constructor() 
     { 
         return;
     }
 
-    ngOnInit(): void 
+    public ngOnInit(): void 
     {
         return;
     }

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-export class NgxMbsVtoolbarService {
-
-  constructor() { }
+export class NgxMbsVtoolbarService 
+{
+    constructor() 
+    { 
+        return;
+    }
 }

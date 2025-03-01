@@ -1,27 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { DiffEditorModel } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
+import { MbsDiffEditorModel } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 
 @Component({
-  selector: 'app-test-diff-editor',
-  templateUrl: './test-diff-editor.component.html',
-  styleUrls: ['./test-diff-editor.component.scss']
+    selector: 'app-test-diff-editor',
+    templateUrl: './test-diff-editor.component.html',
 })
-export class TestDiffEditorComponent implements OnInit {
-    options = {
-        theme: 'vs-dark'
-    };
-    originalModel: DiffEditorModel = {
-        code: 'heLLo world!',
-        language: 'text/plain'
+export class TestDiffEditorComponent implements OnInit 
+{
+    public options = {
+        theme:      'vs-dark'
     };
 
-    modifiedModel: DiffEditorModel = {
-        code: 'hello orlando!',
-        language: 'text/plain'
+    public originalModel: MbsDiffEditorModel = {
+        code:       'heLLo world!',
+        language:   'text/plain'
     };
-    constructor() { }
 
-    ngOnInit(): void {
+    public modifiedModel: MbsDiffEditorModel = {
+        code:       'hello orlando!',
+        language:   'text/plain'
+    };
+
+    constructor() 
+    { 
+        return;
+    }
+
+    public ngOnInit(): void 
+    {
+        return;
     }
 
 }

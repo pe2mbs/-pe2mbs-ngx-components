@@ -46,9 +46,8 @@ class DemoCrudDataSource extends MbsCrudDataSource<ISample_Data>
 
 
 @Component({
-  selector: 'app-test-crud',
-  templateUrl: './test-crud.component.html',
-  styleUrls: ['./test-crud.component.scss']
+    selector: 'app-test-crud',
+    templateUrl: './test-crud.component.html',
 })
 export class TestCrudComponent implements OnInit 
 {

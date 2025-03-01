@@ -1,3 +1,20 @@
+/**
+*   Angular 12 CRUD column select and sizing compnent for main component.  
+* 
+*   Copyright (C) 2020-2025  Marc Bertens-Nguyen  <m.bertens@pe2mbs.nl>
+*
+*   This program is free software; you can redistribute it and/or
+*   modify it under the terms of the GNU General Public License
+*   as published by the Free Software Foundation; only version 2.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program; if not, see <https://www.gnu.org/licenses/>.
+**/
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,7 +29,7 @@ import { IMbsColumn, IMbsColumnOptions } from './mbs-crud.models';
 })
 export class MbsColumnOptionsDialog
 {
-    public displayedColumns: string[] = ['select', 'caption', 'name', 'width' ];
+    public displayedColumns: string[] = [ 'select', 'caption', 'name', 'width' ];
     public dataSource!: MatTableDataSource<IMbsColumn>;
 
     constructor( public dialogRef: MatDialogRef<MbsColumnOptionsDialog>,

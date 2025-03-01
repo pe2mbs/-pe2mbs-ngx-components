@@ -1,3 +1,20 @@
+/**
+*   Angular 12 CRUD module for filtering, sorting and paging on backend.  
+* 
+*   Copyright (C) 2020-2025  Marc Bertens-Nguyen  <m.bertens@pe2mbs.nl>
+*
+*   This program is free software; you can redistribute it and/or
+*   modify it under the terms of the GNU General Public License
+*   as published by the Free Software Foundation; only version 2.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program; if not, see <https://www.gnu.org/licenses/>.
+**/
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
@@ -21,6 +38,8 @@ import { MbsTableButton } from './mbs-table-button-component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MbsCrudHeaderTitleDirective, MbsCrudHeaderButtonDirective } from './mbs-crud-header.directive';
 import { MbsCrudFooterTitleDirective, MbsCrudFooterButtonDirective } from './mbs-crud-footer.directive';
+import { MbsCrudCellOptionDirective } from './mbs-crud-cell-option.directive';
+import { MbsCrudDeleteButtonDirective } from './mbs-crud-delete-button.directive';
 
 
 @NgModule({
@@ -35,6 +54,8 @@ import { MbsCrudFooterTitleDirective, MbsCrudFooterButtonDirective } from './mbs
         MbsCrudHeaderButtonDirective,
         MbsCrudFooterTitleDirective,
         MbsCrudFooterButtonDirective,
+        MbsCrudCellOptionDirective,
+        MbsCrudDeleteButtonDirective,
     ],
     imports: [
         CommonModule,

@@ -1,5 +1,72 @@
 # NgxMbsHeader
 
+# Docs
+Our documentation pages can nbe found [repository](https://github.com/pe2mbs/-pe2mbs-ngx-components) 
+
+# Demo
+Checkout the [demo page](https://github.com/pe2mbs/-pe2mbs-ngx-components) to see mbs-help in action.
+
+# Compatibility
+Angular 12 at this monent. 
+
+# License
+Copyright (c) 2020-2025, Marc Bertens-Nguyen. (GPL2-only License)
+
+
+# Installation
+
+    npm install @pe2mbs/ngx-mbs-footer
+
+# Usage
+## app.module.ts
+Some basic implemention in the `app.module.ts`
+
+    @NgModule( {
+        ...
+        imports: [
+            ...
+            MbsHeaderModule
+            ...
+        ],
+    } ) 
+    export class AppModule 
+    { 
+
+    }
+
+## *.html
+
+    <mbs-header>
+        <mbs-header-left>
+            ...
+        </mbs-header-left>
+        <mbs-header-center>
+            ...
+        </mbs-header-center>
+        <mbs-header-right>
+            ...
+        </mbs-header-right>
+        
+    </mbs-header>
+
+or;
+
+    <mbs-header>
+        <div mbsHeaderLeft>
+            ...
+        </div>
+        <div mbsHeaderCenter>
+            ...
+        </div>
+        <div mbsHeaderRight>
+            ...
+        </div>
+    </mbs-header>
+
+
+
+# API
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
 ## Code scaffolding

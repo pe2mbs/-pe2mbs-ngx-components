@@ -1,5 +1,20 @@
-
-
+/**
+*   Angular 12 CRUD interface models for main component.  
+* 
+*   Copyright (C) 2020-2025  Marc Bertens-Nguyen  <m.bertens@pe2mbs.nl>
+*
+*   This program is free software; you can redistribute it and/or
+*   modify it under the terms of the GNU General Public License
+*   as published by the Free Software Foundation; only version 2.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program; if not, see <https://www.gnu.org/licenses/>.
+**/
 export interface IMbsColumnButton
 {
     icon:           string;
@@ -69,82 +84,98 @@ export interface IMbsFilterRequest
 
 export interface IMbsSortInformation
 {
-    column:     string;
-    algorithm:  'asc' | 'desc';
+    column:         string;
+    algorithm:      'asc' | 'desc';
 };
 
 
 export interface IMbsPagedRequest
 {
-    page:       number;
-    pageSize:   number;
-    cached:     boolean;
-    sorted?:    IMbsSortInformation;
-    filters?:   Array<IMbsFilterSettings>;
-    suppress?:  Array<string>;
+    page:           number;
+    pageSize:       number;
+    cached:         boolean;
+    sorted?:        IMbsSortInformation;
+    filters?:       Array<IMbsFilterSettings>;
+    suppress?:      Array<string>;
 };
 
 
 export interface IMbsPagesResponse<T>
 {
-    count:      number;
-    records:    Array<T>;
+    count:          number;
+    records:        Array<T>;
 };
 
 
 export interface IMbsCrudStatus
 {
-    status:   boolean;
-    message?: string;
+    status:         boolean;
+    message?:       string;
 };
 
 
 export interface IMbsSelectList
 {
-    id:       number;     // The record id (primary key)
-    value:    string | number | Date;
+    id:             number;     // The record id (primary key)
+    value:          string | number | Date;
 };
 
 
 export interface IMbsColumnOptions
 {
-    columns:     Array<IMbsColumn>;
-    edit:        boolean;  
+    columns:        Array<IMbsColumn>;
+    edit:           boolean;  
 };
 
 
 export interface IMbsRouteParameters
 {
-    id:          string;
-    vslue:       any;
-    mode:        'new' | 'edit' | 'view' | 'filter';
-    caption?:    boolean;
+    id:             string;
+    vslue:          any;
+    mode:           'new' | 'edit' | 'view' | 'filter';
+    caption?:       boolean;
 };
 
 export interface IMbsCrudRights
 {
-    create:   boolean;
-    read:     boolean;
-    write:    boolean;
-    delete:   boolean;
+    create:         boolean;
+    read:           boolean;
+    write:          boolean;
+    delete:         boolean;
 };
 
 export interface IMbsTableView
 {
-    columns?:  Array<IMbsColumn>;
-    pagesize?: number;
+    columns?:       Array<IMbsColumn>;
+    pagesize?:      number;
 }
 
 export interface IMbsComponentInfo
 {
-    rights:    IMbsCrudRights;
-    table?:    IMbsTableView;
+    rights:         IMbsCrudRights;
+    table?:         IMbsTableView;
 };
 
 export const CMbsCrudDefaultRights: IMbsCrudRights = 
 {
-    create:   true,
-    read:     true,
-    write:    true,
-    delete:   false,
+    create:         true,
+    read:           true,
+    write:          true,
+    delete:         false,
 }
+
+export enum ECrudOption
+{
+    Create,
+    Read,
+    Update,
+    Delete
+};
+
+export interface ICrudTableInfo
+{
+    rights:         IMbsCrudRights;
+    primary_key:    string;
+    secondary_key:  string;
+
+};

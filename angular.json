@@ -521,6 +521,37 @@
           }
         }
       }
+    },
+    "@pe2mbs/ngx-mbs-inputs": {
+      "projectType": "library",
+      "root": "projects/pe2mbs/ngx-mbs-inputs",
+      "sourceRoot": "projects/pe2mbs/ngx-mbs-inputs/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pe2mbs/ngx-mbs-inputs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-inputs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pe2mbs/ngx-mbs-inputs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pe2mbs/ngx-mbs-inputs/src/test.ts",
+            "tsConfig": "projects/pe2mbs/ngx-mbs-inputs/tsconfig.spec.json",
+            "karmaConfig": "projects/pe2mbs/ngx-mbs-inputs/karma.conf.js"
+          }
+        }
+      }
     }
 
   },

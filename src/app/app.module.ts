@@ -25,7 +25,7 @@ import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { MonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
+import { MbsMonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
 import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
 
@@ -60,7 +60,7 @@ import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
         MbsHelpModule,
         MbsCrudTableModule,
         FontAwesomeModule,
-        MonacoEditorModule.forRoot() // use forRoot() in main app module only.
+        MbsMonacoEditorModule.forRoot() // use forRoot() in main app module only.
     ],
     exports:[
         FontAwesomeModule

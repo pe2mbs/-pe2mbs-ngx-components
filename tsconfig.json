@@ -36,6 +36,10 @@
         "dist/pe2mbs/ngx-mbs-horizonal-menu/pe2mbs-ngx-mbs-horizonal-menu",
         "dist/pe2mbs/ngx-mbs-horizonal-menu"
       ],
+      "@pe2mbs/ngx-mbs-inputs": [
+        "dist/pe2mbs/ngx-mbs-inputs/pe2mbs-ngx-mbs-inputs",
+        "dist/pe2mbs/ngx-mbs-inputs"
+      ],
       "@pe2mbs/ngx-mbs-theme-select": [
         "dist/pe2mbs/ngx-mbs-theme-select/pe2mbs-ngx-mbs-theme-select",
         "dist/pe2mbs/ngx-mbs-theme-select"
@@ -63,6 +67,10 @@
       "ngx-mbs-help": [
         "dist/ngx-mbs-help/ngx-mbs-help",
         "dist/ngx-mbs-help"
+      ],
+      "ngx-mbs-inputs": [
+        "dist/ngx-mbs-inputs/ngx-mbs-inputs",
+        "dist/ngx-mbs-inputs"
       ]
     },
     "experimentalDecorators": true,

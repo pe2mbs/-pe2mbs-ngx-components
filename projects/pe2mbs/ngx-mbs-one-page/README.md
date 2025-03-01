@@ -4,6 +4,45 @@ keeps the screen fit within the browser winodw. It uses three ContentChild's to 
 and set the size of the content-window. Where the header and footer may resize the content-
 window is resized accoringly. 
 
+# Docs
+Our documentation pages can nbe found [repository](https://github.com/pe2mbs/-pe2mbs-ngx-components) 
+
+# Demo
+Checkout the [demo page](https://github.com/pe2mbs/-pe2mbs-ngx-components) to see mbs-help in action.
+
+# Compatibility
+Angular 12 at this monent. 
+
+# License
+Copyright (c) 2020-2025, Marc Bertens-Nguyen. (GPL2-only License)
+
+
+# Installation
+
+    npm install @pe2mbs/ngx-mbs-footer
+
+# Usage
+## app.module.ts
+Some basic implemention in the `app.module.ts`
+
+    @NgModule( {
+        ...
+        imports: [
+            ...
+            MbsFooterModule
+            ...
+        ],
+    } ) 
+    export class AppModule 
+    { 
+
+    }
+
+## *.html
+
+
+# API
+
 ## app.module.ts
 
     import { MbsOnePageModule } from '@pe2mbs/ngx-mbs-one-page';

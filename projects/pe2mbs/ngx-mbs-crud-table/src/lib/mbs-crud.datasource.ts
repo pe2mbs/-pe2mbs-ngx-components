@@ -1,8 +1,25 @@
+/**
+*   Angular 12 CRUD datasource for filtering, sorting and paging on backend.  
+* 
+*   Copyright (C) 2020-2025  Marc Bertens-Nguyen  <m.bertens@pe2mbs.nl>
+*
+*   This program is free software; you can redistribute it and/or
+*   modify it under the terms of the GNU General Public License
+*   as published by the Free Software Foundation; only version 2.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program; if not, see <https://www.gnu.org/licenses/>.
+**/
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
-import { IMbsPagedRequest, IMbsPagesResponse } from "./mbs-crud.models";
+import { ECrudOption, IMbsPagedRequest, IMbsPagesResponse } from "./mbs-crud.models";
 import { MbsCrudService } from "./mbs-crud.service";
 
 
@@ -15,7 +32,7 @@ export class MbsCrudDataSource<T> implements DataSource<T>
     public loading$         = this.loadingSubject.asObservable();
     public paginator!:      MatPaginator;
     
-    constructor( private crudService: MbsCrudService<T> ) 
+    constructor( public crudService: MbsCrudService<T> ) 
     {
         return;
     }
@@ -47,4 +64,9 @@ export class MbsCrudDataSource<T> implements DataSource<T>
         } );
         return 
     }     
+
+    public isCrudOption( value: ECrudOption ): boolean
+    {
+        return ( this.crudService.isCrudOption( value ) )
+    }
 }

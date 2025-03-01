@@ -36,7 +36,10 @@
                 <td mat-cell *matCellDef="let row" class="table-cells" style="display: flex; flex-direction: row;"> 
                     <button class="simple-icon-button" *ngFor="let action of this.columns[ this.columns.length - 1 ].buttons; let i = index" 
                                                         [disabled]="action.disabled" 
-                                                        (click)="action.action( action, row )" ><mat-icon>{{ action.icon }}</mat-icon></button>
+                                                        (click)="action.action( action, row )">
+                        <mat-icon>{{ action.icon }}</mat-icon>
+                    </button>
+                    <ng-content select="mbs-crud-cell-option,[mbsCrudCellOption]"></ng-content>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

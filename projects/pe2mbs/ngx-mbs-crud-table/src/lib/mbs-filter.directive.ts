@@ -1,8 +1,24 @@
+/**
+*   Angular 12 CRUD filter directive for main component.  
+* 
+*   Copyright (C) 2020-2025  Marc Bertens-Nguyen  <m.bertens@pe2mbs.nl>
+*
+*   This program is free software; you can redistribute it and/or
+*   modify it under the terms of the GNU General Public License
+*   as published by the Free Software Foundation; only version 2.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program; if not, see <https://www.gnu.org/licenses/>.
+**/
 import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { MbsCrudFilterDialog } from "./mbs-filter.dialog";
 import { EMbsFilterModes, IMbsFilterRequest, IMbsFilterSettings } from "./mbs-crud.models";
-
 
 
 @Directive({
