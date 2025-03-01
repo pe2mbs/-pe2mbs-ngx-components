@@ -1,41 +1,34 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { MBS_MONACO_EDITOR_CONFIG, MbsMonacoEditorConfig } from './mbs-config';
+import { MbsDiffEditorComponent } from './mbs-diff-editor.component';
+import { MbsEditorComponent } from './mbs-editor.component';
 
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
-import { DiffEditorComponent } from './mbs-diff-editor.component';
-import { EditorComponent } from './mbs-editor.component';
 
 @NgModule( {
     declarations: [
-        EditorComponent,
-        DiffEditorComponent
+        MbsEditorComponent,
+        MbsDiffEditorComponent
     ],
     imports: [
         CommonModule,
     ],
     exports: [
-        EditorComponent,
-        DiffEditorComponent
+        MbsEditorComponent,
+        MbsDiffEditorComponent
     ]
 })
-export class MonacoEditorModule 
+export class MbsMonacoEditorModule 
 {
-    public static forRoot( config: NgxMonacoEditorConfig = {} ): ModuleWithProviders<MonacoEditorModule> 
+    public static forRoot( config: MbsMonacoEditorConfig = {} ): ModuleWithProviders<MbsMonacoEditorModule> 
     {
         return {
-            ngModule: MonacoEditorModule,
+            ngModule: MbsMonacoEditorModule,
             providers: [
-                { provide: NGX_MONACO_EDITOR_CONFIG, 
+                { provide: MBS_MONACO_EDITOR_CONFIG, 
                   useValue: config 
                 }
             ]
         };
     }
 }
-
-// removed Changes for angulur 19 
-// export function provideMonacoEditor(config: NgxMonacoEditorConfig = {}) {
-//   return makeEnvironmentProviders([
-//     { provide: NGX_MONACO_EDITOR_CONFIG, useValue: config }
-//   ]);
-// }

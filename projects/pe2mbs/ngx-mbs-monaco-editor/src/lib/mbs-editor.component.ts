@@ -1,17 +1,16 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Inject, inject, Input, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Inject, Input, NgZone } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { fromEvent } from 'rxjs';
-
-import { BaseEditor } from './mbs-base-editor';
-import { NgxEditorModel } from './mbs-types';
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
+import { MbsBaseEditor } from './mbs-base-editor';
+import { MbsEditorModel } from './mbs-types';
+import { MBS_MONACO_EDITOR_CONFIG, MbsMonacoEditorConfig } from './mbs-config';
 
 declare var monaco: any;
 
 @Component({
     // removed Changes for angulur 19 
     // standalone: true,
-    selector: 'ngx-monaco-editor',
+    selector: 'mbs-monaco-editor',
     template: '<div class="editor-container" #editorContainer></div>',
     styles: [`
         :host {
@@ -27,11 +26,11 @@ declare var monaco: any;
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => EditorComponent),
+        useExisting: forwardRef(() => MbsEditorComponent),
         multi: true
     }]
 })
-export class EditorComponent extends BaseEditor implements ControlValueAccessor 
+export class MbsEditorComponent extends MbsBaseEditor implements ControlValueAccessor 
 {
     // private zone = inject(NgZone);
     private _value: string = '';
@@ -54,7 +53,7 @@ export class EditorComponent extends BaseEditor implements ControlValueAccessor
         return this._options;
     }
 
-    @Input( 'model' ) set model( model: NgxEditorModel ) 
+    @Input( 'model' ) set model( model: MbsEditorModel ) 
     {
         this.options.model = model;
         if ( this._editor ) 
@@ -65,7 +64,7 @@ export class EditorComponent extends BaseEditor implements ControlValueAccessor
         return;
     }
 
-    constructor( private zone: NgZone, @Inject( NGX_MONACO_EDITOR_CONFIG ) private editorConfig: NgxMonacoEditorConfig ) 
+    constructor( private zone: NgZone, @Inject( MBS_MONACO_EDITOR_CONFIG ) private editorConfig: MbsMonacoEditorConfig ) 
     {
         super( editorConfig );
     }

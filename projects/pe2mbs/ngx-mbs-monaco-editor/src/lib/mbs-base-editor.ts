@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, Output, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
+import { MBS_MONACO_EDITOR_CONFIG, MbsMonacoEditorConfig } from './mbs-config';
 
 
 let loadedMonaco = false;
@@ -10,10 +10,10 @@ let loadPromise: Promise<void>;
 @Component({
     template: '',
 })
-export abstract class BaseEditor implements AfterViewInit, OnDestroy 
+export abstract class MbsBaseEditor implements AfterViewInit, OnDestroy 
 {
     // config = inject<NgxMonacoEditorConfig>(NGX_MONACO_EDITOR_CONFIG);
-    constructor( @Inject( NGX_MONACO_EDITOR_CONFIG ) protected config: NgxMonacoEditorConfig ) 
+    constructor( @Inject( MBS_MONACO_EDITOR_CONFIG ) protected config: MbsMonacoEditorConfig ) 
     {
         return;
     }

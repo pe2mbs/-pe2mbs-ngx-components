@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, NgZone, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, NgZone } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { BaseEditor } from './mbs-base-editor';
-import { DiffEditorModel } from './mbs-types';
-import { NGX_MONACO_EDITOR_CONFIG, NgxMonacoEditorConfig } from './mbs-config';
+import { MbsBaseEditor } from './mbs-base-editor';
+import { MbsDiffEditorModel } from './mbs-types';
+import { MBS_MONACO_EDITOR_CONFIG, MbsMonacoEditorConfig } from './mbs-config';
 
 
 declare var monaco: any;
@@ -11,7 +11,7 @@ declare var monaco: any;
 @Component({
     // removed Changes for angulur 19 
     // standalone: true,
-    selector: 'ngx-monaco-diff-editor',
+    selector: 'mbs-monaco-diff-editor',
     template: '<div class="editor-container" #editorContainer></div>',
     styles: [`
       :host {
@@ -26,11 +26,11 @@ declare var monaco: any;
     `],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DiffEditorComponent extends BaseEditor 
+export class MbsDiffEditorComponent extends MbsBaseEditor 
 {
     // private zone = inject(NgZone);
-    _originalModel!: DiffEditorModel;
-    _modifiedModel!: DiffEditorModel;
+    _originalModel!: MbsDiffEditorModel;
+    _modifiedModel!: MbsDiffEditorModel;
 
     @Input( 'options' ) set options( options: any ) 
     {
@@ -48,7 +48,7 @@ export class DiffEditorComponent extends BaseEditor
         return ( this._options );
     }
 
-    @Input( 'originalModel' ) set originalModel( model: DiffEditorModel ) 
+    @Input( 'originalModel' ) set originalModel( model: MbsDiffEditorModel ) 
     {
         this._originalModel = model;
         if ( this._editor ) 
@@ -59,7 +59,7 @@ export class DiffEditorComponent extends BaseEditor
         return;
     }
 
-    @Input( 'modifiedModel' ) set modifiedModel( model: DiffEditorModel ) 
+    @Input( 'modifiedModel' ) set modifiedModel( model: MbsDiffEditorModel ) 
     {
         this._modifiedModel = model;
         if ( this._editor ) 
@@ -70,7 +70,7 @@ export class DiffEditorComponent extends BaseEditor
         return;
     }
 
-    constructor( private zone: NgZone, @Inject( NGX_MONACO_EDITOR_CONFIG ) private editorConfig: NgxMonacoEditorConfig ) 
+    constructor( private zone: NgZone, @Inject( MBS_MONACO_EDITOR_CONFIG ) private editorConfig: MbsMonacoEditorConfig ) 
     {
         super( editorConfig );
         return;
