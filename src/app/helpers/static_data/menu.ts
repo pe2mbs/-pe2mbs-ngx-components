@@ -43,13 +43,19 @@ export const FakeMenu: Array<IMbsMenuItem> = [
         caption: "Extras",
         icon: [ 'fas', "sms" ],
         visible: true,
-        items: [
-            
+        items: [      
+            {
+                id: "3.1",
+                caption: "Test tree",
+                visible: true,
+                routerLink: "test-tree",
+                icon: [ 'fas', "trash" ]
+            },
             {
                 id: "3.2",
-                caption: "Link 3.2 - google.uk.co",
+                caption: "Test split dual tree",
                 visible: true,
-                routerLink: "#https://www.google.uk.co",
+                routerLink: "test-dual-tree",
                 icon: [ 'fas', "trash" ]
             },
             {

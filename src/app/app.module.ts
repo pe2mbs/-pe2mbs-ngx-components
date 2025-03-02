@@ -28,6 +28,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { MbsMonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src/public-api';
 import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
 import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
+import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
         TestCrudComponent,
         TestEditorComponent,
         TestDiffEditorComponent,
+        TestTreeViewComponent,
     ],
     imports: [
         BrowserModule,
