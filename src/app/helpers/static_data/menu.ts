@@ -55,7 +55,7 @@ export const FakeMenu: Array<IMbsMenuItem> = [
                 id: "3.2",
                 caption: "Test split dual tree",
                 visible: true,
-                routerLink: "test-dual-tree",
+                routerLink: "test-split-tree",
                 icon: [ 'fas', "trash" ]
             },
             {

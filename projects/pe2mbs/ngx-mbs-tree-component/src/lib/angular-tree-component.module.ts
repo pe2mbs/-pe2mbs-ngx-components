@@ -1,18 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TreeMobxAutorunDirective } from './mobx-angular/tree-mobx-autorun.directive';
-
-import {
-  IActionHandler,
-  IActionMapping,
-  TREE_ACTIONS
-} from './models/tree-options.model';
-import {
-  IAllowDragFn,
-  IAllowDropFn,
-  ITreeOptions,
-  ITreeState
-} from './defs/api';
+import { IActionHandler, IActionMapping, TREE_ACTIONS } from './models/tree-options.model';
+import { IAllowDragFn, IAllowDropFn, ITreeOptions, ITreeState } from './defs/api';
 import { KEYS } from './constants/keys';
 import { TreeModel } from './models/tree.model';
 import { TreeNode } from './models/tree-node.model';

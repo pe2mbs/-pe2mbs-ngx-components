@@ -17,7 +17,8 @@
 **/
 export interface IMbsColumnButton
 {
-    icon:           string;
+    fontIcon:       string; 
+    fontSet:        string;
     action:         any;
     disabled?:      string; 
 };
@@ -40,7 +41,8 @@ export interface IMbsColumn
 
 export interface IMbsActionButton
 {
-    icon:           string;
+    fontIcon:       string; 
+    fontSet:        string;
     action:         any;
     disabled?:      string; 
 };

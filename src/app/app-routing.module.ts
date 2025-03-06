@@ -4,6 +4,7 @@ import { TestCrudComponent } from './test-crud/test-crud.component';
 import { TestEditorComponent } from './test-editor/test-editor.component';
 import { TestDiffEditorComponent } from './test-diff-editor/test-diff-editor.component';
 import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component';
+import { TestSplitTreeViewComponent } from './test-split-tree-view/test-split-tree-view.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'test-tree',
         component: TestTreeViewComponent,
+    },
+    {
+        path: 'test-split-tree',
+        component: TestSplitTreeViewComponent,
     }
 ];
 

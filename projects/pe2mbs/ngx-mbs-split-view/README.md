@@ -26,7 +26,7 @@ Some basic implemention in the `app.module.ts`
         ...
         imports: [
             ...
-            MbsFooterModule
+            MbsSplitViewModule
             ...
         ],
     } ) 
@@ -36,6 +36,19 @@ Some basic implemention in the `app.module.ts`
     }
 
 ## *.html
+
+    <mbs-split-view>
+        <div mbsSplitPane splitRatio="1">
+            ...
+        </div>
+        <div mbsSplitPane splitRatio="2">
+            ...
+        </div>
+        <div mbsSplitPane splitRatio="1">
+            ...
+        </div>
+
+    </mbs-split-view>
 
 
 # API

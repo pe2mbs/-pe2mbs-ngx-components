@@ -3,16 +3,15 @@ import { ITreeOptions, TreeComponent } from 'projects/pe2mbs/ngx-mbs-tree-compon
 import { createNodes } from '../helpers/tree-nodes';
 
 
-
-
 @Component({
-    selector: 'app-test-tree-view',
-    templateUrl: './test-tree-view.component.html',
-    styleUrls: ['./test-tree-view.component.scss']
+    selector: 'app-test-split-tree-view',
+    templateUrl: './test-split-tree-view.component.html',
+    styleUrls: ['./test-split-tree-view.component.scss']
 })
-export class TestTreeViewComponent implements OnInit 
+export class TestSplitTreeViewComponent implements OnInit 
 {
-    @ViewChild( 'dataTree',  { static: true } )  dataTree!: TreeComponent;
+    @ViewChild( 'dataTreeLeft',  { static: true } )  dataTreeLEft!: TreeComponent;
+    @ViewChild( 'dataTreeRight',  { static: true } )  dataTreeRight!: TreeComponent;
 
     public nodes = createNodes( 10 );
     public options: ITreeOptions = {
@@ -29,7 +28,7 @@ export class TestTreeViewComponent implements OnInit
     { 
         let i = 0;
         this.nodes.forEach( element => {
-            element.children = createNodes( 5, 13, element ); 
+            element.children = createNodes( 10, 13, element ); 
             element.faIcon = 'fa-folder'
             element.faSet = 'far'
             i++;
@@ -42,15 +41,25 @@ export class TestTreeViewComponent implements OnInit
     {
         return;
     }
-
-    public expand( $event: any )
+    
+    public expandLeft( $event: any ): void
     {
-        this.dataTree.treeModel.expandAll();
+        return;
     }
 
-    public colapse( $event: any )
+    public colapseLeft( $event: any ): void
     {
-        this.dataTree.treeModel.collapseAll();
+        return;
+    }
+
+    public expandRight( $event: any ): void
+    {
+        return;
+    }
+
+    public colapseRight( $event: any ): void
+    {
+        return;
     }
 
 }

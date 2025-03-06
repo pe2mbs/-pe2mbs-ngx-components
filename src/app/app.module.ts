@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MbsNewsbarModule } from 'projects/pe2mbs/ngx-mbs-newsbar/src/public-api';
@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { fakeBackendProvider } from './helpers/fake-backend-interceptor';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,6 +29,10 @@ import { MbsMonacoEditorModule } from 'projects/pe2mbs/ngx-mbs-monaco-editor/src
 import { MbsCrudTableModule } from 'projects/pe2mbs/ngx-mbs-crud-table/src/public-api';
 import { MbsHelpModule } from 'projects/pe2mbs/ngx-mbs-help/src/public-api';
 import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component';
+import { TestSplitTreeViewComponent } from './test-split-tree-view/test-split-tree-view.component';
+import { TreeModule } from 'projects/pe2mbs/ngx-mbs-tree-component/src/public-api';
+import { PropertyEditorComponent } from './property-editor/property-editor.component';
+import { EditPropertyComponent } from './property-editor/edit-property/edit-property.component';
 
 
 @NgModule({
@@ -38,6 +42,9 @@ import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component
         TestEditorComponent,
         TestDiffEditorComponent,
         TestTreeViewComponent,
+        TestSplitTreeViewComponent,
+        PropertyEditorComponent,
+        EditPropertyComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,11 +53,15 @@ import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component
         ReactiveFormsModule,
         HttpClientModule,
         FormsModule,
+
         MatButtonModule,
         MatRadioModule,
         MatIconModule,
         MatIconModule,
         MatMenuModule,
+        
+        TreeModule,
+
         MatToolbarModule,
         MbsMenubarModule,
         MbsNewsbarModule,
@@ -62,18 +73,20 @@ import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component
         MbsHelpModule,
         MbsCrudTableModule,
         FontAwesomeModule,
-        MbsMonacoEditorModule.forRoot() // use forRoot() in main app module only.
+        MbsMonacoEditorModule.forRoot(), // use forRoot() in main app module only.
+        
     ],
     exports:[
         FontAwesomeModule
     ],
     providers: [
         fakeBackendProvider,
+        MatIconRegistry,
         DemoCrudService,
         { provide: 'MbsNewsFeedUri', useValue: '/api/rss/newsfeed' }, 
-        { provide: 'MbsMenuUri', useValue: '/api/menu' },
-        { provide: 'MbsHelp', useValue: { uri: '/api/help' } },
-        { provide: 'MbsThemeData', useValue: { uri: '/api/theme',
+        { provide: 'MbsMenuUri',    useValue: '/api/menu' },
+        { provide: 'MbsHelp',       useValue: { uri: '/api/help' } },
+        { provide: 'MbsThemeData',  useValue: { uri: '/api/theme',
                                                theme: { displayName: 'Light theme',
                                                         name: 'light-theme',
                                                         isDark: false,
@@ -87,9 +100,16 @@ import { TestTreeViewComponent } from './test-tree-view/test-tree-view.component
     ]
 })
 export class AppModule 
-{ 
-    constructor( library: FaIconLibrary, faConfig: FaConfig ) 
+{
+    constructor(public iconRegistry: MatIconRegistry, 
+                library: FaIconLibrary, faConfig: FaConfig,
+                sanitizer: DomSanitizer ) 
     {
-        library.addIconPacks( fas, fab, far );
+        library.addIconPacks(fas, far, fab);
+        iconRegistry.registerFontClassAlias( 'fontawesome', 'fa' );
+        iconRegistry.setDefaultFontSetClass( 'fa' )
+        iconRegistry.addSvgIcon('thumbs-up', 
+                     sanitizer.bypassSecurityTrustResourceUrl('assets/addwatch.svg'));
+        //iconRegistry.addSvgIconLiteral('thumbs-up', sanitizer.bypassSecurityTrustHtml(THUMBUP_ICON));
     }
 }

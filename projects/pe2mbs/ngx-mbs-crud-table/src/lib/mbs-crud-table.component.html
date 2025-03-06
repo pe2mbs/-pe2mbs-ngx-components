@@ -1,14 +1,16 @@
 <div style="height: 100%;">
     <div class="table-header">
-        <div class="title"><ng-content select="mbs-crud-header-title,[mbsCrudHeaderTitle]"></ng-content></div>
+        <div class="title">
+            <ng-content select="mbs-crud-header-title,[mbsCrudHeaderTitle]"></ng-content>
+        </div>
         <div class="action">
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageEvent( $event )"
                         aria-label="Select page of periodic elements">
             </mat-paginator>
             <div style="padding-top: 8px; display: flex; flex-direction: row;">
-                <mbs-table-button tooltip="Edit table view configuration" (click)="onViewSettings( $event )" icon="settings"></mbs-table-button>
-                <mbs-table-button tooltip="Auto refresh data, every {{autoRefresh}} seconds" *ngIf="autoRefresh > 0" (click)="onAutoRefresh( $event )" icon="history"></mbs-table-button>
-                <mbs-table-button tooltip="Refresh data" [disabled]="this.timerHandle !== undefined" (click)="refresh( $event )" icon="refresh"></mbs-table-button>
+                <mbs-table-button tooltip="Edit table view configuration" (click)="onViewSettings( $event )" fontSet="fas" fontIcon="fa-ellipsis-v"></mbs-table-button>
+                <mbs-table-button tooltip="Auto refresh data, every {{autoRefresh}} seconds" *ngIf="autoRefresh > 0" (click)="onAutoRefresh( $event )" fontSet="fas" fontIcon="fa-sync"></mbs-table-button>
+                <mbs-table-button tooltip="Refresh data" [disabled]="this.timerHandle !== undefined" (click)="refresh( $event )" fontSet="fas" fontIcon="fa-redo"></mbs-table-button>
                 <ng-content select="mbs-crud-header-button,[mbsCrudHeaderButton]"></ng-content>
             </div>
         </div>
@@ -24,7 +26,7 @@
                         </div>
                         <div *ngIf="column.filter" style="display: flex; flex-direction: row;">
                             <button class="simple-icon-button" mbsFilter [columnInfo]="column" (confirm)="onFilter( $event )" [filterColor]="filterColor">
-                                <mat-icon style="font-size: 16px;padding-top: 4px;">settings</mat-icon>
+                                <mat-icon style="font-size: 16px;padding-top: 4px;" fontSet="fas" fontIcon="fa-filter"></mat-icon>
                             </button>
                         </div>
                     </div>
@@ -37,7 +39,7 @@
                     <button class="simple-icon-button" *ngFor="let action of this.columns[ this.columns.length - 1 ].buttons; let i = index" 
                                                         [disabled]="action.disabled" 
                                                         (click)="action.action( action, row )">
-                        <mat-icon>{{ action.icon }}</mat-icon>
+                        <mat-icon [fontSet]="action.fontSet" [fontIcon]="action.fontIcon"></mat-icon>
                     </button>
                     <ng-content select="mbs-crud-cell-option,[mbsCrudCellOption]"></ng-content>
                 </td>

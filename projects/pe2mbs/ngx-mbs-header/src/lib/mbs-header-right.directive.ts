@@ -19,7 +19,7 @@ import { Directive } from '@angular/core';
 
 
 @Directive({
-    selector: '[mbsHeaderRight].mbs-header-right'
+    selector: '[mbsHeaderRight],mbs-header-right'
 })
 export class MbsHeaderRightDirective 
 {

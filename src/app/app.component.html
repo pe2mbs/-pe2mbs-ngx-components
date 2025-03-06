@@ -1,27 +1,27 @@
 <div class="max-window" mbsOnePage mbsTheme="worldline-theme">
     <div #header_content class="content-header">
         <mbs-header color="primary">
-            <header-logo>
+            <div mbsHeaderLogo>
                 <img src="/assets/logo.png" height="48">
-            </header-logo>
-            <header-title>
+            </div>
+            <div mbsHeaderCenter>
                 <span class="header-title">{{ title }}</span>
-            </header-title>
-            <header-right>
+            </div>
+            <div mbsHeaderRight>
                 <button mat-icon-button [matMenuTriggerFor]="menu"
                         aria-label="Example icon-button with a menu">
-                    <mat-icon>contrast</mat-icon>
+                    <mat-icon fontSet="fa" fontIcon="fa-adjust"></mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
                     <mbs-theme-select></mbs-theme-select>
                 </mat-menu>
                 <button mat-icon-button class="header-buttons" aria-label="Example icon-button with heart icon">
-                    <mat-icon>language</mat-icon>
+                    <mat-icon fontSet="fas" fontIcon="fa-globe"></mat-icon>
                 </button>
                 <button mat-icon-button class="header-buttons" aria-label="Example icon-button with share icon">
-                    <mat-icon>person</mat-icon>
+                    <mat-icon fontSet="fa" fontIcon="fa-user"></mat-icon>
                 </button>  
-            </header-right>
+            </div>
         </mbs-header>
         <mbs-newsbar></mbs-newsbar>
         <mbs-menubar>
@@ -31,17 +31,17 @@
         <router-outlet></router-outlet>
         <mbs-vtoolbar color="primary" mode="regular" orientation="right">
             <mbs-icon-button color="primary">
-                <mat-icon>home</mat-icon>
+                <mat-icon fontSet="fas" fontIcon="fa-home" ></mat-icon>
             </mbs-icon-button>
         </mbs-vtoolbar>
     </div>
     <div #footer_content>
         <mbs-footer color="accent">
-            <mbs-footer-center>&copy; Copyright 2025 by PE2MBS - Marc Bertens-Nguyen</mbs-footer-center>
-            <mbs-footer-right>
+            <div mbsFooterCenter>&copy; Copyright 2025 by PE2MBS - Marc Bertens-Nguyen</div>
+            <div mbsFooterRight>
                 <div style="padding-top: 10px;">
                     <mbs-icon-button [matMenuTriggerFor]="applicInfoMenu">
-                        <mat-icon>privacy_tip</mat-icon>
+                        <mat-icon fontSet="fas" fontIcon="fa-user-secret" ></mat-icon>
                     </mbs-icon-button>
                     <mat-menu #applicInfoMenu="matMenu">
                         <ul>
@@ -52,10 +52,10 @@
                         </ul>
                     </mat-menu>
                     <mbs-icon-button mbsHelpTrigger="general">
-                        <mat-icon>home</mat-icon>
+                        <mat-icon fontSet="fas" fontIcon="fa-home" ></mat-icon>
                     </mbs-icon-button>
                 </div>
-            </mbs-footer-right>
+            </div>
         </mbs-footer>
     </div>
 </div>

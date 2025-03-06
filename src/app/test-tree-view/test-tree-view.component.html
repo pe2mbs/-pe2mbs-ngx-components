@@ -1,1 +1,17 @@
-<p>test-tree-view works!</p>
+<div class="tree-box">
+    <tree-root #dataTree [nodes]="nodes" [options]="options">
+        <ng-template #treeNodeTemplate let-node let-index="index">
+            <mat-icon *ngIf="node.data.faIcon" [fontSet]="node.data.faSet" 
+                                               [fontIcon]="node.data.faIcon">
+            </mat-icon>
+            <mat-icon *ngIf="node.data.svgIcon" class="tree-svg-icon" [svgIcon]="node.data.svgIcon">
+            </mat-icon>
+            <span>Data {{ node.data.name }}</span>
+        </ng-template>
+    </tree-root>
+</div>
+<div>
+    <button mat-raised-button (click)="expand( $event )">Expand</button>
+    <button mat-raised-button (click)="colapse( $event )">Colapse</button>
+    <button mat-icon-button ><mat-icon svgIcon="thumbs-up"></mat-icon></button>
+</div>

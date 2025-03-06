@@ -1,7 +1,7 @@
 .table-header
 {
     width:                  calc( 100% - 20px );
-    height:                 56px;
+    height:                 48px;
     margin:                 0px 10px;
     display:                flex;
     flex-direction:         row;
@@ -22,10 +22,15 @@
     }
 }
 
+.mat-form-field, .mat-form-field-wrapper, .mat-form-field-flex
+{
+    height: 48px !important;
+}
+
 .table-footer
 {
     width:                  calc( 100% - 20px );
-    height:                 56px;
+    height:                 48px;
     margin:                 0px 10px;
     display:                flex;
     flex-direction:         row;
@@ -173,7 +178,8 @@ tr:nth-of-type(even)
 .simple-icon-button
 {
     border:                 0;
-    
+    padding-left:           3px;
+    padding-right:          3px;
 }
 
 .mat-cell .simple-icon-button:focus 
@@ -187,6 +193,8 @@ tr:nth-of-type(even)
     width:                  16px;
     fill:                   none;
     font-size:              16px;
+    padding-left:           3px;
+    padding-right:          3px;
 }
 
 

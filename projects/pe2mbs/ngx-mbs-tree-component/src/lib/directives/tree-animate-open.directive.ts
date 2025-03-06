@@ -67,7 +67,7 @@ export class TreeAnimateOpenDirective
 
         // increase maxHeight until height doesn't change
         setTimeout( () => { // Allow inner element to create its content
-            const i = setInterval( () => {
+            const i: any = setInterval( () => {
                 if ( !this._isOpen || !this.innerElement ) 
                 {
                     return clearInterval( i );
@@ -101,7 +101,7 @@ export class TreeAnimateOpenDirective
         let height = this.innerElement.getBoundingClientRect().height; // TBD use renderer
 
         // slowly decrease maxHeight to 0, starting from current height
-        const i = setInterval(() => {
+        const i: any = setInterval(() => {
             if ( this._isOpen || !this.innerElement ) 
             {
                 return clearInterval(i);

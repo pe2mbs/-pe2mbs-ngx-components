@@ -1,6 +1,98 @@
 # NgxMbsInputs
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+## Text
+    <mbs-text-input>
+        <button mbsLeftInputButton mat-icon-button (click)="doAction( $event )">
+            <mat-icon>pen</mat-icon>
+        </button>
+        <button mbsRightInputButton mat-icon-button (click)="doAction( $event )">
+            <mat-icon>dots</mat-icon>
+        </button>
+        <div mbsInputError>
+            <mat-hint>Errors appear instantly!</mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError( 'email' ) && !emailFormControl.     
+                        hasError( 'required' )">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError( 'required' )">
+                Email is <strong>required</strong>
+            </mat-error>
+        </div>
+    </mbs-text-input>
+
+## Number
+    <mbs-number-input>
+        ...
+    </mbs-number-input>
+
+## Choice list
+    <mbs-choice-input>
+
+    </mbs-choice-input>
+
+## Combo box
+    <mbs-combo-input>
+
+    </mbs-combo-input>
+
+## Check box
+    <mbs-check-input>
+
+    </mbs-check-input>
+
+## E-Mail
+    <mbs-email-input>
+
+    </mbs-email-input>
+
+## Password
+    <mbs-password-input>
+
+    </mbs-password-input>
+
+## FileSelect
+    <mbs-file-select-input>
+
+    </mbs-file-select-input>
+
+## Slider
+    <mbs-slider-input>
+
+    </mbs-slider-input>
+
+## Slider
+    <mbs-slider-toggle-input>
+
+    </mbs-slider-toggle-input>
+
+## Textarea
+    <mbs-textarea-input>
+
+    </mbs-textarea-input>
+
+## Date
+    <mbs-date-input>
+
+    </mbs-date-input>
+
+## Time
+    <mbs-time-input>
+
+    </mbs-time-input>
+
+## DateTime
+    <mbs-datetime-input>
+
+    </mbs-datetime-input>
+
+## Editor (monaco)
+    <mbs-editor-input>
+        <mbs-editor-toolbar>
+
+        </mbs-editor-toolbar>
+    </mbs-editor-input>
+
+
 
 ## Code scaffolding
 

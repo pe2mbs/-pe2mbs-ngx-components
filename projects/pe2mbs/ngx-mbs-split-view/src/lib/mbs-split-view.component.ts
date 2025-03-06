@@ -1,88 +1,37 @@
-import { AfterContentInit, Component, ContentChildren, Directive, Input, OnChanges,
+import { AfterContentInit, Component, ContentChildren, Input, OnChanges,
          OnDestroy, QueryList, SimpleChanges, ViewContainerRef, HostBinding, Output,
-         EventEmitter, ContentChild, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+         EventEmitter, ContentChild, ChangeDetectionStrategy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { map, mergeAll, startWith, switchMap } from 'rxjs/operators';
 import Split from 'split.js';
-
-export type SplitDirection  = 'horizontal' | 'vertical';
-
-
-export type GutterAlignment = 'start' | 'end' | 'center';
+import { MbsDragEvent, MbsGutterAlignment, MbsSplitDirection } from './model';
+import { MbsSplitPaneDirective } from './mbs-split-view-pane.directive';
+import { MbsSplitViewGutterDirective } from './mbs-split-view-gutter.directive';
 
 
-export interface DragEvent 
-{
-    readonly source: SplitViewComponent;
-    readonly sizes: ReadonlyArray<number>;
-}
-
-
-@Directive({
-    // tslint:disable-next-line: directive-selector
-    selector: '[mbsSplitPane]'
-})
-export class SplitPaneDirective implements OnChanges 
-{
-    @Input() splitRatio: number = 1;
-    @Input() minSize: number = 100;
-
-    sizeChanges: Subject<void> = new Subject<void>();
-    minSizeChanges: Subject<void> = new Subject<void>();
-
-    constructor( public readonly viewContainerRef: ViewContainerRef ) 
-    {
-        return;
-    }
-
-    public ngOnChanges( changes: SimpleChanges ): void 
-    {
-        if ( changes.splitRatio )  
-        {
-            this.sizeChanges.next();
-        }
-        if ( changes.minSize ) 
-        {
-            this.minSizeChanges.next();
-        }
-        return;
-    }
-}
-
-@Directive({
-    // tslint:disable-next-line: directive-selector
-    selector: '[mbsGutter]'
-})
-export class SplitViewGutterDirective 
-{
-    constructor( public readonly template: TemplateRef<any> ) 
-    {
-        return;
-    }
-}
 
 @Component({
     // tslint:disable-next-line: component-selector
     selector: 'mbs-split-view',
     template: '<ng-content select="[mbsSplitPane]"></ng-content>',
-    styleUrls: [ './split-view.component.scss' ],
+    styleUrls: [ './mbs-split-view.component.scss' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentInit {
-
-    @Output() dragging    = new EventEmitter<DragEvent>();
-    @Output() dragStart   = new EventEmitter<DragEvent>();
-    @Output() dragEnd     = new EventEmitter<DragEvent>();
+export class MbsSplitViewComponent implements OnChanges, OnDestroy, AfterContentInit 
+{
+    @Output() dragging    = new EventEmitter<MbsDragEvent>();
+    @Output() dragStart   = new EventEmitter<MbsDragEvent>();
+    @Output() dragEnd     = new EventEmitter<MbsDragEvent>();
 
     @Input() expandToMin  = false;
     @Input() gutterSize   = 10;
-    @Input() gutterAlign: GutterAlignment = 'center';
+    @Input() gutterAlign: MbsGutterAlignment = 'center';
     @Input() snapOffset   = 30;
     @Input() dragInterval = 1;
-    @Input() direction: SplitDirection = 'horizontal';
+    @Input() direction: MbsSplitDirection = 'horizontal';
 
-    @ContentChildren(SplitPaneDirective) splitPanes!: QueryList<SplitPaneDirective>;
-    @ContentChild(SplitViewGutterDirective, { static: true }) gutterDef!: SplitViewGutterDirective;
+    @ContentChildren( MbsSplitPaneDirective ) splitPanes!: QueryList<MbsSplitPaneDirective>;
+    @ContentChild( MbsSplitViewGutterDirective, { static: true } ) gutterDef!: MbsSplitViewGutterDirective;
 
     private split!: Split.Instance | undefined;
     private subscriptions = new Subscription();
@@ -92,11 +41,15 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
         return;
     }
 
-    @HostBinding('class.split-view-horizontal')
-        get isHorizontal(): boolean { return this.direction === 'horizontal'; }
+    @HostBinding( 'class.split-view-horizontal' ) get isHorizontal(): boolean 
+    { 
+        return this.direction === 'horizontal'; 
+    }
 
-    @HostBinding('class.split-view-vertical')
-        get isVertical(): boolean { return this.direction === 'vertical'; }
+    @HostBinding( 'class.split-view-vertical' ) get isVertical(): boolean 
+    { 
+        return this.direction === 'vertical'; 
+    }
 
     public ngOnChanges(changes: SimpleChanges): void 
     {
@@ -109,12 +62,12 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
 
     public ngAfterContentInit(): void 
     {
-        const splitPaneChanges = this.splitPanes.changes.pipe( startWith( this.splitPanes ) );
-        const childrenChanges = splitPaneChanges.subscribe( () => this.refresh() );
-        const sizeChanges = splitPaneChanges.pipe(
+        const splitPaneChanges  = this.splitPanes.changes.pipe( startWith( this.splitPanes ) );
+        const childrenChanges   = splitPaneChanges.subscribe( () => this.refresh() );
+        const sizeChanges       = splitPaneChanges.pipe(
             switchMap( () => this.splitPanes.map( p => p.sizeChanges ) ),
             mergeAll() ).subscribe( () => this.split?.setSizes( this.getSizes() ) );
-        const dragEndEvents = this.dragEnd.pipe( map( event => event.sizes ) ).subscribe( sizes => {
+        const dragEndEvents     = this.dragEnd.pipe( map( event => event.sizes ) ).subscribe( sizes => {
             const panes = this.splitPanes.toArray();
             for ( let i = 0; i < panes.length; i++ ) 
             {
@@ -141,8 +94,8 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
         {
             return;
         }
-        const panes     = new Array<HTMLElement>();
-        const minSizes  = new Array<number>();
+        const panes: Array<HTMLElement> = new Array<HTMLElement>();
+        const minSizes: Array<number>   = new Array<number>();
         this.splitPanes.forEach( d => {
             panes.push( d.viewContainerRef.element.nativeElement );
             minSizes.push( d.minSize );
@@ -166,7 +119,7 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
             onDrag: ( sizes: number[] ) => {
                 if ( this.dragging.observers.length > 0 ) 
                 {
-                    this.dragging.emit({ source: this, sizes });
+                    this.dragging.emit( { source: this, sizes } );
                 }
             },
             onDragStart: ( sizes: number[] ) => this.dragStart.emit( { source: this, sizes } ),
@@ -175,9 +128,9 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
 
         if ( this.gutterDef ) 
         {
-            splitOptions.gutter = ( index: number, direction: SplitDirection ) => {
+            splitOptions.gutter = ( index: number, direction: MbsSplitDirection ) => {
                 const view = this.viewContainerRef.createEmbeddedView(this.gutterDef.template);
-                const elements = view.rootNodes.filter( e => e instanceof HTMLElement );
+                const elements = view.rootNodes.filter( ( e: any ) => e instanceof HTMLElement );
                 if ( elements.length !== 1 ) 
                 {
                     throw new Error('Gutter template must contain exactly one element');
@@ -185,7 +138,6 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
                 return elements[ 0 ];
             };
         }
-
         this.split = Split( panes, splitOptions );
         return;
     }
@@ -204,15 +156,15 @@ export class SplitViewComponent implements OnChanges, OnDestroy, AfterContentIni
 
     private getSizes(): number[] 
     {
-        const panes = new Array<HTMLElement>();
-        const ratios = new Array<number>();
-        let totalSize = 0;
-        this.splitPanes.forEach( d => {
+        const panes: Array<HTMLElement> = new Array<HTMLElement>();
+        const ratios: Array<number>     = new Array<number>();
+        let totalSize: number = 0;
+        this.splitPanes.forEach( ( d: MbsSplitPaneDirective ) => {
             panes.push( d.viewContainerRef.element.nativeElement );
-            const sanitizedSize = d.splitRatio >= 0 ? d.splitRatio : 0;
+            const sanitizedSize: number = d.splitRatio >= 0 ? d.splitRatio : 0;
             ratios.push( sanitizedSize );
             totalSize += sanitizedSize;
         } );
-        return ratios.map( size => ( size / totalSize ) * 100 );
+        return ratios.map( ( size: number ) => ( size / totalSize ) * 100 );
     }
 }

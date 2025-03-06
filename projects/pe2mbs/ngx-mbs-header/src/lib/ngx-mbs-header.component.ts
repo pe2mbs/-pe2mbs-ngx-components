@@ -26,7 +26,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     <span class="spacer"></span>
     <ng-content select="[mbsHeaderCenter],mbs-header-center"> </ng-content>
     <span class="spacer"></span>
-    <ng-content select="[mbsHeaderRight].mbs-header-right"></ng-content>
+    <ng-content select="[mbsHeaderRight],mbs-header-right"></ng-content>
 </mat-toolbar></div>`,
     styles: [ `
 :host
@@ -34,6 +34,13 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     width: 100%;
     height: 60px;
 }
+
+mat-icon
+{
+    width: 32px;
+    height: 32px;
+}
+
 .spacer 
 {
     flex: 1 1 auto;

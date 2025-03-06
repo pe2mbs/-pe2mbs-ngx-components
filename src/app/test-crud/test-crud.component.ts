@@ -75,15 +75,18 @@ export class TestCrudComponent implements OnInit
             *
             */
             { 
-                icon: 'edit', 
+                fontIcon: 'fa-pen', 
+                fontSet: 'fas',
                 action: this.onClick 
             },
             { 
-                icon: 'print', 
+                fontIcon: 'fa-print', 
+                fontSet: 'fas',
                 action: this.onClick 
             },
             { 
-                icon: 'delete', 
+                fontIcon: 'fa-trash-alt', 
+                fontSet: 'fas',
                 action: this.onClick 
             },
             
