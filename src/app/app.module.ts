@@ -33,7 +33,9 @@ import { TestSplitTreeViewComponent } from './test-split-tree-view/test-split-tr
 import { TreeModule } from 'projects/pe2mbs/ngx-mbs-tree-component/src/public-api';
 import { PropertyEditorComponent } from './property-editor/property-editor.component';
 import { EditPropertyComponent } from './property-editor/edit-property/edit-property.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     declarations: [
@@ -53,12 +55,15 @@ import { EditPropertyComponent } from './property-editor/edit-property/edit-prop
         ReactiveFormsModule,
         HttpClientModule,
         FormsModule,
-
+        MatFormFieldModule,
         MatButtonModule,
         MatRadioModule,
         MatIconModule,
         MatIconModule,
         MatMenuModule,
+        MatTooltipModule,
+        MatInputModule,
+
         
         TreeModule,
 

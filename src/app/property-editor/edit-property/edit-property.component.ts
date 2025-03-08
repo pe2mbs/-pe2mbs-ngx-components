@@ -1,24 +1,13 @@
-import { ComponentPortal, Portal } from '@angular/cdk/portal';
-import { Component, EventEmitter, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { MbsNumberInputComponent } from 'projects/pe2mbs/ngx-mbs-inputs/src/lib/mbs-number-input/mbs-number-input.component';
-import { MbsTextInputComponent } from 'projects/pe2mbs/ngx-mbs-inputs/src/lib/mbs-text-input/mbs-text-input.component';
-
-
-export interface ICheckListItem
-{
-    checked:  boolean;
-    label:    string;
-};
-
-
-export interface IPropertyItem
-{
-    label: string
-    type: 'string' | 'number' | 'boolean' | 'date' | 'time' | 'datetime' | 'array' | 'checklist'; 
-    value: string | number | boolean | Date | Array<string> | Array<ICheckListItem>;
-    onChange: EventEmitter<IPropertyItem>;
-
-};
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { InputComponent, IPropertyItem } from './abstract-edit.component';
+import { PropTextInputComponent } from './text-edit.component';
+import { PropNumberInputComponent } from './number-edit.component';
+import { PropBooleanInputComponent } from './boolean-text.component';
+import { PropDateInputComponent } from './date-text.component';
+import { PropTimeInputComponent } from './time-text.component';
+import { PropDateTimeInputComponent } from './datetime-text.component';
+import { PropArrayInputComponent } from './array-text.component';
+import { PropCheckListInputComponent } from './checklist-text.component';
 
 
 @Component({
@@ -29,30 +18,58 @@ export interface IPropertyItem
 export class EditPropertyComponent implements OnInit 
 {
     @Input()    item!: IPropertyItem;
+    @ViewChild( 'value_element', { read: ViewContainerRef, static: false } ) dynamicInsert?: ViewContainerRef;
     
-    public selectedPortal: Portal<any>;
-    public componentPortal: ComponentPortal< MbsTextInputComponent >;
+    protected componentPortal: InputComponent | null      = null;
 
-    constructor( private _viewContainerRef: ViewContainerRef )
+    constructor( private componentFactoryResolver: ComponentFactoryResolver )
     { 
-        this.componentPortal = new ComponentPortal( MbsTextInputComponent );
-        this.selectedPortal = this.componentPortal
         return;
+    }
+    
+    public createComponent( obj: any ): InputComponent 
+    {
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory( PropTextInputComponent );
+        const component: InputComponent = <InputComponent>this.dynamicInsert?.createComponent( componentFactory ).instance;
+        component.item = this.item;
+        component.change = this.item.onChange;
+        return ( component );
     }
 
     public ngOnInit(): void 
     {
         if ( this.item.type == 'string' )
         {
-            this.componentPortal = new ComponentPortal( MbsTextInputComponent );
-
-          }
+            this.componentPortal = this.createComponent( PropTextInputComponent );
+        }
         else if ( this.item.type == 'number' )
         {
-            this.componentPortal = new ComponentPortal( MbsNumberInputComponent );
-            
+            this.componentPortal = this.createComponent( PropNumberInputComponent );
         }
-        this.selectedPortal = this.componentPortal
+        else if ( this.item.type == 'boolean' )
+        {
+            this.componentPortal = this.createComponent( PropBooleanInputComponent );  
+        }
+        else if ( this.item.type == 'date' )
+        {
+            this.componentPortal = this.createComponent( PropDateInputComponent );  
+        }
+        else if ( this.item.type == 'time' )
+        {
+            this.componentPortal = this.createComponent( PropTimeInputComponent );  
+        }
+        else if ( this.item.type == 'datetime' )
+        {
+            this.componentPortal = this.createComponent( PropDateTimeInputComponent );  
+        }
+        else if ( this.item.type == 'array' )
+        {
+            this.componentPortal = this.createComponent( PropArrayInputComponent );  
+        }
+        else if ( this.item.type == 'checklist' )
+        {
+            this.componentPortal = this.createComponent( PropCheckListInputComponent );  
+        } 
         return;
     }
 
